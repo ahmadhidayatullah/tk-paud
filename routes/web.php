@@ -67,6 +67,15 @@ Route::group($all_user, function () {
         Route::delete('/{id}', 'DataSiswaController@destroy')->name('data-siswa.delete');
     });
 
+    Route::group(['prefix' => 'pembayaran'], function () {
+        Route::get('/', 'PembayaranController@index')->name('pembayaran');
+        Route::post('/', 'PembayaranController@store')->name('pembayaran.submit');
+    });
+
+    Route::group(['prefix' => 'laporan'], function () {
+        Route::get('/', 'LaporanController@index')->name('laporan');
+    });
+
     Route::group(['prefix' => 'log'], function () {
         Route::get('/', 'LogActivityController@index')->name('log');
     });

@@ -16,8 +16,8 @@
       <li class="nav-item"><a class="nav-link {{ is_current_route(['data-guru', 'data-guru/*']) }}" href="{{route('data-guru')}}"><em class="fa fa-address-card-o"></em> Data Guru</a></li>
       <li class="nav-item"><a class="nav-link {{ is_current_route(['data-siswa', 'data-siswa/*']) }}" href="{{route('data-siswa')}}"><em class="fa fa-id-card-o"></em> Data Siswa</a></li>
       <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-exchange"></em> Kontrol Penitipan</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-dollar"></em> Pembayaran</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-bar-chart"></em> Laporan</a></li>
+      <li class="nav-item"><a class="nav-link {{ is_current_route(['pembayaran', 'pembayaran/*']) }}" href="{{route('pembayaran')}}"><em class="fa fa-dollar"></em> Pembayaran</a></li>
+      <li class="nav-item"><a class="nav-link {{ is_current_route(['laporan', 'laporan/*']) }}" href="{{route('laporan')}}"><em class="fa fa-bar-chart"></em> Laporan</a></li>
       <li class="nav-item"><a class="nav-link {{ is_current_route(['log','log/*']) }}" href="{{route('log')}}"><em class="fa fa-file"></em> Log System</a></li>
     </ul>
     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="logout-button"><em class="fa fa-power-off"></em> Logout</a>
