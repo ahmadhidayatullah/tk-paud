@@ -21,20 +21,6 @@ class UsersTableSeeder extends Seeder
                 'role_id' => 1,
                 'is_active' => true,
             ],
-            [
-                'name' => 'guru',
-                'username' => 'guru',
-                'password' => bcrypt('guru'),
-                'role_id' => 2,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'wali',
-                'username' => 'wali',
-                'password' => bcrypt('wali'),
-                'role_id' => 3,
-                'is_active' => true,
-            ],
 
         ];
         DB::table('users')->insert($data);

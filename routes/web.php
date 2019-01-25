@@ -57,6 +57,16 @@ Route::group($all_user, function () {
         Route::delete('/{id}', 'DataGuruController@destroy')->name('data-guru.delete');
     });
 
+    Route::group(['prefix' => 'data-siswa'], function () {
+        Route::get('/', 'DataSiswaController@index')->name('data-siswa');
+        Route::get('/create', 'DataSiswaController@create')->name('data-siswa.create');
+        Route::get('/{id}', 'DataSiswaController@show')->name('data-siswa.show');
+        Route::post('/', 'DataSiswaController@store')->name('data-siswa.create.submit');
+        // Route::get('/edit/{id}', 'DataSiswaController@edit')->name('data-siswa.edit');
+        // Route::put('/{id}', 'DataSiswaController@update')->name('data-siswa.update');
+        Route::delete('/{id}', 'DataSiswaController@destroy')->name('data-siswa.delete');
+    });
+
     Route::group(['prefix' => 'log'], function () {
         Route::get('/', 'LogActivityController@index')->name('log');
     });

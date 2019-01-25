@@ -226,6 +226,7 @@ return [
         //helper
         'LogActivity' => App\Helpers\LogActivity::class,
         'GeneralHelper' => App\Helpers\General::class,
+        'Biaya' => App\Helpers\Biaya::class,
 
     ],
 

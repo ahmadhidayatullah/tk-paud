@@ -14,21 +14,9 @@
         </ul>
       </li>      
       <li class="nav-item"><a class="nav-link {{ is_current_route(['data-guru', 'data-guru/*']) }}" href="{{route('data-guru')}}"><em class="fa fa-address-card-o"></em> Data Guru</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-id-card-o"></em> Data Siswa</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-id-card-o"></em> Kontrol Penitipan</a></li>
-      <li class="parent nav-item">
-        <a class="nav-link collapsed" data-toggle="collapse" href="#sub-item-1" aria-expanded="false">
-          <em class="fa fa-file-o">&nbsp;</em> Pembayaran <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right collapsed" aria-expanded="false"><i class="fa fa-plus"></i></span>
-        </a>
-        <ul class="children collapse" id="sub-item-1" style="">
-          <li class="nav-item"><a class="nav-link" href="login.html">
-            Login
-          </a></li>
-          <li class="nav-item"><a class="nav-link" href="error.html">
-            Error 404
-          </a></li>
-        </ul>
-      </li>
+      <li class="nav-item"><a class="nav-link {{ is_current_route(['data-siswa', 'data-siswa/*']) }}" href="{{route('data-siswa')}}"><em class="fa fa-id-card-o"></em> Data Siswa</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-exchange"></em> Kontrol Penitipan</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-dollar"></em> Pembayaran</a></li>
       <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-bar-chart"></em> Laporan</a></li>
       <li class="nav-item"><a class="nav-link {{ is_current_route(['log','log/*']) }}" href="{{route('log')}}"><em class="fa fa-file"></em> Log System</a></li>
     </ul>
