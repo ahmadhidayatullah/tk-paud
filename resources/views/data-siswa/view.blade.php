@@ -64,10 +64,10 @@
                       @foreach ($data->getPembayaran as $item) 
                         @if ($item->jenis_pembayaran == 'bulanan')
                           <tr>
-                            <td>{{$item->tanggal}}</td>
-                            <td>{{ucwords($item->jenis_pembayaran)}}</td>
                             <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
+                            <td>{{ucwords($item->jenis_pembayaran)}}</td>
                             <td>{{\GeneralHelper::toRupiah($item->bayar)}}</td>
+                            <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
                           </tr>
                         @endif   
                       @endforeach
