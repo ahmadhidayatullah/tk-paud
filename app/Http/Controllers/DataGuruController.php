@@ -13,7 +13,11 @@ class DataGuruController extends Controller
 {
     public function index()
     {
-        $data = DataGuru::orderBy('id', 'DESC')->get();
+        if (Auth::user()->role_id == 2) {
+            $data = DataGuru::where('user_id', Auth::user()->id)->get();
+        } else {
+            $data = DataGuru::orderBy('id', 'DESC')->get();
+        }
         return view('data-guru.index', [
             'data' => $data,
         ]);

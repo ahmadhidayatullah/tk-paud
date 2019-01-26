@@ -10,7 +10,9 @@
       </div>
       </a>
       <div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="{{route('user.show',Auth::user()->id)}}"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
+        @if (Auth::user()->role_id == 1)    
+          <a class="dropdown-item" href="{{route('user.show',Auth::user()->id)}}"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
+        @endif
         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
             <em class="fa fa-power-off mr-1"></em> Logout</a>
         </div>

@@ -7,6 +7,7 @@
             <div class="card mb-4">
                 <div class="card-block">
                   <h3 class="card-title">Form Pembayaran</h3>
+                  @if(session('message')) {!!session('message')!!} @endif
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Jenis Bayar</label>
                       <div class="col-md-9">
@@ -17,21 +18,21 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Tanggal</label>
+                      <div class="col-md-9">
+                        <input type="date" class="form-control {{ $errors->has('tanggal') ? ' is-invalid' : '' }}" value="{{ old('tanggal') }}" placeholder="tanggal" name="tanggal" required>
+                        @if ($errors->has('tanggal')) 
+                          <small class="form-text text-muted">{{$errors->first('tanggal')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label class="col-md-3 col-form-label">Nama Siswa</label>
                       <div class="col-md-9">
                           {{csrf_field()}}
                         <input type="text" class="form-control {{ $errors->has('data_siswa_id') ? ' is-invalid' : '' }}" value="{{ old('data_siswa_id') }}" placeholder="Nama" name="data_siswa_id" required>
                         @if ($errors->has('data_siswa_id')) 
                           <small class="form-text text-muted">{{$errors->first('data_siswa_id')}}</small>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Tanggal</label>
-                      <div class="col-md-9">
-                        <input type="date" class="form-control {{ $errors->has('tanggal') ? ' is-invalid' : '' }}" value="{{ old('tanggal') }}" placeholder="tanggal" name="tanggal" required>
-                        @if ($errors->has('tanggal')) 
-                          <small class="form-text text-muted">{{$errors->first('tanggal')}}</small>
                         @endif
                       </div>
                     </div>

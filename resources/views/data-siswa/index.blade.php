@@ -5,8 +5,9 @@
         <div class="card mb-4">
             <div class="card-block">
                 <h3 class="card-title">Halaman Siswa
-
+                    @if (Auth::user()->role_id == 1)    
                   <a href="{{route('data-siswa.create')}}" class="btn btn-md btn-default">Tambah Siswa</a>
+                  @endif
                 </h3>
                 <div class="table-responsive">
                     @if(session('message')) {!!session('message')!!} @endif
@@ -32,8 +33,10 @@
                               class="editor_view"><i class="fa fa-expand"></i></a>
                             {{-- <a href="{{route('data-guru.edit',$item->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                                 class="editor_view"><i class="fa fa-pencil"></i></a> --}}
+                                @if (Auth::user()->role_id == 1)    
                             <a data-href="{{route('data-siswa.delete',$item->id)}}" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"
                               title="Hapus" class="editor_remove"><i class="fa fa-trash"></i></a>
+                              @endif
                           </td>
                         </tr>
                         @endforeach

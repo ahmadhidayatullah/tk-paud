@@ -14,7 +14,11 @@ class DataSiswaController extends Controller
 {
     public function index()
     {
-        $data = DataSiswa::orderBy('id', 'DESC')->get();
+        if (Auth::user()->role_id == 2) {
+            $data = DataSiswa::where('user_id', Auth::user()->id)->get();
+        } else {
+            $data = DataSiswa::orderBy('id', 'DESC')->get();
+        }
         return view('data-siswa.index', [
             'data' => $data,
         ]);

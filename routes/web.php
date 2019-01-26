@@ -76,6 +76,13 @@ Route::group($all_user, function () {
         Route::get('/', 'LaporanController@index')->name('laporan');
     });
 
+    Route::group(['prefix' => 'kontrol-penitipan'], function () {
+        Route::get('/', 'KontrolPenitipanController@index')->name('kontrol-penitipan');
+        Route::get('/create', 'KontrolPenitipanController@create')->name('kontrol-penitipan.create');
+        Route::post('/', 'KontrolPenitipanController@store')->name('kontrol-penitipan.create.submit');
+        // Route::delete('/{id}', 'KontrolPenitipanController@destroy')->name('kontrol-penitipan.delete');
+    });
+
     Route::group(['prefix' => 'log'], function () {
         Route::get('/', 'LogActivityController@index')->name('log');
     });
