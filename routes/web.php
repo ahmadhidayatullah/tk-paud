@@ -70,6 +70,8 @@ Route::group($all_user, function () {
     Route::group(['prefix' => 'pembayaran'], function () {
         Route::get('/', 'PembayaranController@index')->name('pembayaran');
         Route::post('/', 'PembayaranController@store')->name('pembayaran.submit');
+        Route::get('/getSiswa', 'PembayaranController@getSiswa')->name('kontrol-penitipan.getSiswa');
+        Route::get('/getBiaya', 'PembayaranController@getBiaya')->name('kontrol-penitipan.getBiaya');
     });
 
     Route::group(['prefix' => 'laporan'], function () {
@@ -80,6 +82,7 @@ Route::group($all_user, function () {
         Route::get('/', 'KontrolPenitipanController@index')->name('kontrol-penitipan');
         Route::get('/create', 'KontrolPenitipanController@create')->name('kontrol-penitipan.create');
         Route::post('/', 'KontrolPenitipanController@store')->name('kontrol-penitipan.create.submit');
+        Route::get('/getSiswa', 'KontrolPenitipanController@getSiswa')->name('kontrol-penitipan.getSiswa');
         // Route::delete('/{id}', 'KontrolPenitipanController@destroy')->name('kontrol-penitipan.delete');
     });
 

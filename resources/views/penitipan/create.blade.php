@@ -9,15 +9,21 @@
                   <h3 class="card-title">Form Kontrol</h3>
                   <div class="form-group row">
                       <label class="col-md-3 col-form-label">Nama Siswa</label>
-                      <div class="col-md-9">
-                          {{csrf_field()}}
-                        <input type="text" class="form-control {{ $errors->has('data_siswa_id') ? ' is-invalid' : '' }}" value="{{ old('data_siswa_id') }}" placeholder="Nama" name="data_siswa_id" required>
+                      {{csrf_field()}}
+                      <div class="col-md-4">
+                        <input type="text" id="cari" class="form-control" value="" placeholder="Cari Siswa" name="tempat" required>
+                      
+                      </div>
+                      <div class="col-md-5">
+                        <select class="custom-select form-control" name="data_siswa_id" id="data_siswa_id">
+                          <option value="">-- Silahkan Cari Siswa -- </option>
+                        </select>
                         @if ($errors->has('data_siswa_id')) 
                           <small class="form-text text-muted">{{$errors->first('data_siswa_id')}}</small>
                         @endif
                       </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                       <label class="col-md-3 col-form-label">Waktu</label>
                       <div class="col-md-9">
                         <input type="date" class="form-control {{ $errors->has('waktu') ? ' is-invalid' : '' }}" value="{{ old('waktu') }}" placeholder="waktu" name="waktu" required>
@@ -25,7 +31,7 @@
                           <small class="form-text text-muted">{{$errors->first('waktu')}}</small>
                         @endif
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Keterlambatan (Menit)</label>
                       <div class="col-md-9">
@@ -49,4 +55,27 @@
     </div>
 </form>
 {{-- </section> --}}
+@endsection
+@section('assetjs')
+<script src="{{asset('js/axios.min.js')}}"></script>
+
+    <script type="text/javascript">
+      $('#cari').on('keyup',function(){
+        let text = $(this).val();
+
+        let url = $('meta[name="app-url"]').attr('content')
+
+        axios.get(`${url}/kontrol-penitipan/getSiswa/?text=${text}`).then(function (response) {
+          let text = response.data
+          if (text == '') {
+            $('#data_siswa_id').html(text)
+          }else{
+            $('#data_siswa_id').html(text)
+          }
+          // $('data_siswa_id').html()
+        }).catch((error) => {
+           console.log(error);
+        });
+      });
+    </script>
 @endsection

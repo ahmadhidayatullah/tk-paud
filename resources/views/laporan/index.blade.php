@@ -26,7 +26,7 @@
                           <td>{{ucwords($item->jenis_pembayaran)}}</td>
                           <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
                           <td>{{\GeneralHelper::toRupiah($item->bayar)}}</td>
-                          <td>{{\GeneralHelper::toRupiah($item->denda)}}</td>
+                          <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
                           {{-- <td>
                             <a href="{{route('data-guru.edit',$item->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                               class="editor_view"><i class="fa fa-pencil"></i></a>

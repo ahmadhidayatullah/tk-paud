@@ -5,7 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="app-url" content="{{ url('/') }}">
 	<title>TK Paud</title>
 
     <!-- Bootstrap core CSS -->
