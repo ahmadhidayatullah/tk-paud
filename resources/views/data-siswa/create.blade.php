@@ -7,6 +7,15 @@
             <div class="card mb-4">
                 <div class="card-block">
                   <h3 class="card-title">Data Siswa</h3>
+                  <div class="form-group row">
+                      <label class="col-md-3 col-form-label">NIS</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('nis') ? ' is-invalid' : '' }}" value="{{ old('nis') }}" placeholder="Nomor Induk Siswa" name="nis" required>
+                        @if ($errors->has('nis')) 
+                          <small class="form-text text-muted">{{$errors->first('nis')}}</small>
+                        @endif
+                      </div>
+                    </div>
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Nama</label>
                       <div class="col-md-9">
@@ -58,6 +67,19 @@
                         @endif
                       </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label">Kelas</label>
+                        <div class="col-md-9">
+                          <select class="custom-select form-control" name="kelas" id="kelas">
+                            <option value="">Tidak Ada</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                          </select>
+                          @if ($errors->has('kelas')) 
+                            <small class="form-text text-muted">{{$errors->first('kelas')}}</small>
+                          @endif
+                        </div>
+                      </div>
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Jenis Siswa</label>
                       <div class="col-md-9">
@@ -166,7 +188,7 @@
     let stengah_hari = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 1.500.000</li><li>uang bulanan 650.000</li><li>11.30 - 17.00</li></ul></div></div>";
     
     let jenis_siswa = $("#jenis_siswa option:selected").val();
-    if (jenis_siswa == '1') {
+    if (jenis_siswa == '1' || jenis_siswa == '4') {
       $("#rincian").html(tk);
     }else if(jenis_siswa == '2'){
       $("#rincian").html(seharian);

@@ -41,6 +41,7 @@ class DataSiswaController extends Controller
             'name' => 'required|string|max:255',
             'no_hp' => 'required',
             //murid
+            'nis' => 'required',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
             'tempat' => 'required',
@@ -71,7 +72,9 @@ class DataSiswaController extends Controller
         if ($user) {
             $siswa = DataSiswa::create([
                 'user_id' => $user->id,
+                'nis' => $request->nis,
                 'nama' => $request->nama,
+                'kelas' => $request->kelas,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'tempat' => $request->tempat,
                 'tanggal_lahir' => $request->tanggal_lahir,
@@ -83,7 +86,7 @@ class DataSiswaController extends Controller
             ]);
 
             if ($request->jenis_bayar == 'cash') {
-                if ($request->jenis_biaya_siswa_id != 1) {
+                if ($request->jenis_biaya_siswa_id != 1 || $request->jenis_biaya_siswa_id != 4) {
                     Pembayaran::insert([
                         ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
                         ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pangkal, 'created_at' => date('Y-m-d H:i:s')],
@@ -98,7 +101,7 @@ class DataSiswaController extends Controller
                     ]);
                 }
             } else {
-                if ($request->jenis_biaya_siswa_id != 1) {
+                if ($request->jenis_biaya_siswa_id != 1 || $request->jenis_biaya_siswa_id != 4) {
                     Pembayaran::insert([
                         ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
                         ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $request->cicilan, 'created_at' => date('Y-m-d H:i:s')],

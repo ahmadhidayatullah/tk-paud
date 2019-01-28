@@ -16,7 +16,9 @@ class CreateDataSiswaTable extends Migration
         Schema::create('data_siswa', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->string('nis');
             $table->string('nama');
+            $table->enum('kelas', ['A', 'B'])->nullable();
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat');
             $table->date('tanggal_lahir');

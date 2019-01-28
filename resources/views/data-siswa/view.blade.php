@@ -5,10 +5,22 @@
         <div class="card mb-4">
             <div class="card-block">
               <h3 class="card-title">Data Siswa</h3>
+              <div class="form-group row">
+                  <label class="col-md-3 col-form-label">NIS</label>
+                  <div class="col-md-9">
+                    <input type="text" class="form-control" value="{{ ucwords($data->nis) }}" readonly>
+                  </div>
+                </div>
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label">Nama</label>
                   <div class="col-md-9">
                     <input type="text" class="form-control" value="{{ ucwords($data->nama) }}" readonly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Kelas</label>
+                  <div class="col-md-9">
+                    <input type="text" class="form-control" value="{{ ucwords($data->kelas) }}" readonly>
                   </div>
                 </div>
                 <div class="form-group row">

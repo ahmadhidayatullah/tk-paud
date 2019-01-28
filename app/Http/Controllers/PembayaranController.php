@@ -75,12 +75,14 @@ class PembayaranController extends Controller
             $respone = [
                 'bayar' => $getDataSiswa->getJenisBiayaById->pangkal,
                 'denda' => 0,
+                'total' => $getDataSiswa->getJenisBiayaById->bulanan,
             ];
         } else {
-            if ($getDataSiswa->jenis_biaya_siswa_id == '1') {
+            if ($getDataSiswa->jenis_biaya_siswa_id == '1' || $getDataSiswa->jenis_biaya_siswa_id == '4') {
                 $respone = [
                     'bayar' => $getDataSiswa->getJenisBiayaById->bulanan,
                     'denda' => 0,
+                    'total' => $getDataSiswa->getJenisBiayaById->bulanan,
                 ];
             } else {
                 $respone = $this->__getPenitipan($tanggal, $siswa);
@@ -112,6 +114,7 @@ class PembayaranController extends Controller
         $respone = [
             'bayar' => $getDataSiswa->getJenisBiayaById->bulanan,
             'denda' => $count,
+            'total' => $getDataSiswa->getJenisBiayaById->bulanan + $count,
         ];
 
         return $respone;

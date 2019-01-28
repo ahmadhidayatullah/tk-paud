@@ -14,7 +14,9 @@
                     <table class="table table-striped table-bordered zero-configuration" id="dataTable">
                       <thead>
                         <tr>
+                          <th>NIS</th>
                           <th>Nama</th>
+                          <th>kelas</th>
                           <th>Jenis Kelamin</th>
                           <th>Jenis Siswa</th>
                           <th>Jenis Bayar</th>
@@ -24,7 +26,9 @@
                       <tbody>
                         @foreach ($data as $item)
                         <tr>
+                          <td>{{$item->nis}}</td>
                           <td>{{ucwords($item->nama)}}</td>
+                          <td>{{$item->kelas}}</td>
                           <td>{{$item->jenis_kelamin}}</td>
                           <td>{{$item->getJenisBiayaById->nama}}</td>
                           <td>{{ucwords($item->jenis_bayar)}}</td>
@@ -43,7 +47,9 @@
                       </tbody>
                       <tfoot>
                         <tr>
+                          <th>NIS</th>
                           <th>Nama</th>
+                          <th>kelas</th>
                           <th>Jenis Kelamin</th>
                           <th>Jenis Siswa</th>
                           <th>Jenis Bayar</th>

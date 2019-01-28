@@ -59,7 +59,17 @@
                         @endif
                       </div>
                     </div>
-                    
+
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Total</label>
+                      <div class="col-md-9">
+                        <input type="number" id="total" class="form-control {{ $errors->has('total') ? ' is-invalid' : '' }}" value="{{ (old('total') !== null) ? old('total') : 0 }}" placeholder="total" name="total" required>
+                        @if ($errors->has('total')) 
+                          <small class="form-text text-muted">{{$errors->first('total')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    @if (Auth::user()->role_id == 1)
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label"></label>
                       <div class="col-md-9 right">
@@ -67,7 +77,7 @@
                         <button type="submit" class="btn btn-md btn-info">Simpan</button>
                       </div>
                     </div>
-                  
+                  @endif
                 </div>
               </div>
         </div>
@@ -114,6 +124,7 @@
             console.log(text);
             $('#bayar').val(text.bayar)
             $('#denda').val(text.denda)
+            $('#total').val(text.total)
           }
         }).catch((error) => {
            console.log(error);
