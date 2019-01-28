@@ -7,7 +7,15 @@
             <div class="card mb-4">
                 <div class="card-block">
                   <h3 class="card-title">Edit Guru</h3>
-                  
+                   <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Nip</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('nip') ? ' is-invalid' : '' }}" placeholder="nip" name="nip" value="{{$data->nip}}" required>
+                        @if ($errors->has('nip')) 
+                          <small class="form-text text-muted">{{$errors->first('nip')}}</small>
+                        @endif
+                      </div>
+                    </div>
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Jenis Kelamin</label>
                       <div class="col-md-9">
@@ -39,6 +47,33 @@
                         <input type="date" class="form-control {{ $errors->has('tanggal_lahir') ? ' is-invalid' : '' }}" value="{{ $data->tanggal_lahir }}" placeholder="Tanggal lahir" name="tanggal_lahir" required>
                         @if ($errors->has('tanggal_lahir')) 
                           <small class="form-text text-muted">{{$errors->first('tanggal_lahir')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Pangkat</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('pangkat') ? ' is-invalid' : '' }}" placeholder="Pangkat" name="pangkat" value="{{$data->pangkat}}" required>
+                        @if ($errors->has('pangkat')) 
+                          <small class="form-text text-muted">{{$errors->first('pangkat')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Jabatan</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('jabatan') ? ' is-invalid' : '' }}" placeholder="Jabatan" name="jabatan" value="{{$data->jabatan}}" required>
+                        @if ($errors->has('jabatan')) 
+                          <small class="form-text text-muted">{{$errors->first('jabatan')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Pendidikan</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('pendidikan') ? ' is-invalid' : '' }}" placeholder="Pendidikan" name="pendidikan" value="{{$data->pendidikan}}" required>
+                        @if ($errors->has('pendidikan')) 
+                          <small class="form-text text-muted">{{$errors->first('pendidikan')}}</small>
                         @endif
                       </div>
                     </div>

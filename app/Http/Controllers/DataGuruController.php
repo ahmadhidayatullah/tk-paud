@@ -40,6 +40,10 @@ class DataGuruController extends Controller
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required',
+            'nip' => 'required',
+            'jabatan' => 'required',
+            'pangkat' => 'required',
+            'pendidikan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -65,6 +69,10 @@ class DataGuruController extends Controller
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'alamat' => $request->alamat,
                 'no_hp' => $request->no_hp,
+                'nip' => $request->nip,
+                'jabatan' => $request->jabatan,
+                'pangkat' => $request->pangkat,
+                'pendidikan' => $request->pendidikan,
             ]);
             \LogActivity::addToLog("Tambah data user ID #{$user->id}.");
             \LogActivity::addToLog("Tambah data Guru ID #{$guru->id}.");
@@ -97,6 +105,10 @@ class DataGuruController extends Controller
                 'tanggal_lahir' => 'required',
                 'alamat' => 'required',
                 'no_hp' => 'required',
+                'nip' => 'required',
+                'jabatan' => 'required',
+                'pangkat' => 'required',
+                'pendidikan' => 'required',
                 'password' => 'min:6|required|confirmed',
                 'password_confirmation' => 'required|min:6',
             ]);
@@ -112,6 +124,10 @@ class DataGuruController extends Controller
                 'tanggal_lahir' => 'required',
                 'alamat' => 'required',
                 'no_hp' => 'required',
+                'nip' => 'required',
+                'jabatan' => 'required',
+                'pangkat' => 'required',
+                'pendidikan' => 'required',
             ]);
         }
 
@@ -135,6 +151,10 @@ class DataGuruController extends Controller
         $guru->tanggal_lahir = $request->tanggal_lahir;
         $guru->alamat = $request->alamat;
         $guru->no_hp = $request->no_hp;
+        $guru->nip = $request->nip;
+        $guru->jabatan = $request->jabatan;
+        $guru->pangkat = $request->pangkat;
+        $guru->pendidikan = $request->pendidikan;
         $guru->getUserById->save();
         $guru->save();
 

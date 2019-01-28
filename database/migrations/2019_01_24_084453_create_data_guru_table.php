@@ -16,7 +16,11 @@ class CreateDataGuruTable extends Migration
         Schema::create('data_guru', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->string('nip');
             $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('jabatan');
+            $table->string('pangkat');
+            $table->string('pendidikan');
             $table->string('tempat');
             $table->date('tanggal_lahir');
             $table->text('alamat');

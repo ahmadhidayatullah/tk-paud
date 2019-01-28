@@ -14,6 +14,7 @@
                     <table class="table table-striped table-bordered zero-configuration" id="dataTable">
                       <thead>
                         <tr>
+                          <th>NIP</th>
                           <th>Nama</th>
                           <th>Jenis Kelamin</th>
                           <th>No. Hp</th>
@@ -24,6 +25,7 @@
                       <tbody>
                         @foreach ($data as $item)
                         <tr>
+                          <td>{{$item->nip}}</td>
                           <td>{{ucwords($item->getUserById->name)}}</td>
                           <td>{{$item->jenis_kelamin}}</td>
                           <td>{{$item->no_hp}}</td>
@@ -41,6 +43,7 @@
                       </tbody>
                       <tfoot>
                         <tr>
+                          <th>NIP</th>
                           <th>Nama</th>
                           <th>Jenis Kelamin</th>
                           <th>No. Hp</th>
