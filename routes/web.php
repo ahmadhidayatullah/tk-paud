@@ -58,8 +58,8 @@ Route::group($all_user, function () {
     });
 
     Route::group(['prefix' => 'data-siswa'], function () {
-        Route::get('/', 'DataSiswaController@index')->name('data-siswa');
-        Route::get('/create', 'DataSiswaController@create')->name('data-siswa.create');
+        Route::get('/{siswa?}', 'DataSiswaController@index')->name('data-siswa');
+        Route::get('/create/siswa', 'DataSiswaController@create')->name('data-siswa.create');
         Route::get('/{id}', 'DataSiswaController@show')->name('data-siswa.show');
         Route::post('/', 'DataSiswaController@store')->name('data-siswa.create.submit');
         // Route::get('/edit/{id}', 'DataSiswaController@edit')->name('data-siswa.edit');
@@ -75,7 +75,7 @@ Route::group($all_user, function () {
     });
 
     Route::group(['prefix' => 'laporan'], function () {
-        Route::get('/', 'LaporanController@index')->name('laporan');
+        Route::get('/{semester?}/{kelompok?}', 'LaporanController@index')->name('laporan');
     });
 
     Route::group(['prefix' => 'kontrol-penitipan'], function () {

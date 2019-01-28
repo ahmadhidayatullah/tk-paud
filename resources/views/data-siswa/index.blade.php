@@ -4,7 +4,7 @@
     <div class="col-md-12 col-lg-12">
         <div class="card mb-4">
             <div class="card-block">
-                <h3 class="card-title">Halaman Siswa
+                <h3 class="card-title">{{$title}}
                     @if (Auth::user()->role_id == 1)    
                   <a href="{{route('data-siswa.create')}}" class="btn btn-md btn-default">Tambah Siswa</a>
                   @endif

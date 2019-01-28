@@ -12,15 +12,29 @@ use Validator;
 
 class DataSiswaController extends Controller
 {
-    public function index()
+    public function index($siswa = '')
     {
-        if (Auth::user()->role_id == 3) {
-            $data = DataSiswa::where('user_id', Auth::user()->id)->get();
+        if ($siswa == 'tk') {
+            $title = "Siswa TK";
+            $data = DataSiswa::where('jenis_biaya_siswa_id', 1)->orderBy('id', 'DESC')->get();
+        } elseif ($siswa == 'kb') {
+            $title = "Kelompok Bermain";
+            $data = DataSiswa::where('jenis_biaya_siswa_id', 4)->orderBy('id', 'DESC')->get();
+        } elseif ($siswa == 'tpa') {
+            $title = "Kelompok Bermain";
+            $data = DataSiswa::where('jenis_biaya_siswa_id', 2)->orWhere('jenis_biaya_siswa_id', 3)->orderBy('id', 'DESC')->get();
         } else {
-            $data = DataSiswa::orderBy('id', 'DESC')->get();
+            if (Auth::user()->role_id == 3) {
+                $title = "Halaman Siswa";
+                $data = DataSiswa::where('user_id', Auth::user()->id)->get();
+            } else {
+                $title = "Halaman Siswa";
+                $data = DataSiswa::orderBy('id', 'DESC')->get();
+            }
         }
         return view('data-siswa.index', [
             'data' => $data,
+            'title' => $title,
         ]);
     }
 
