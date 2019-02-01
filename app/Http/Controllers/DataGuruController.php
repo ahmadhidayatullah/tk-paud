@@ -41,6 +41,7 @@ class DataGuruController extends Controller
             'alamat' => 'required',
             'no_hp' => 'required',
             'nip' => 'required',
+            'nuptk' => 'required',
             'jabatan' => 'required',
             'pangkat' => 'required',
             'pendidikan' => 'required',
@@ -70,6 +71,7 @@ class DataGuruController extends Controller
                 'alamat' => $request->alamat,
                 'no_hp' => $request->no_hp,
                 'nip' => $request->nip,
+                'nuptk' => $request->nuptk,
                 'jabatan' => $request->jabatan,
                 'pangkat' => $request->pangkat,
                 'pendidikan' => $request->pendidikan,
@@ -106,6 +108,7 @@ class DataGuruController extends Controller
                 'alamat' => 'required',
                 'no_hp' => 'required',
                 'nip' => 'required',
+                'nuptk' => 'required',
                 'jabatan' => 'required',
                 'pangkat' => 'required',
                 'pendidikan' => 'required',
@@ -125,6 +128,7 @@ class DataGuruController extends Controller
                 'alamat' => 'required',
                 'no_hp' => 'required',
                 'nip' => 'required',
+                'nuptk' => 'required',
                 'jabatan' => 'required',
                 'pangkat' => 'required',
                 'pendidikan' => 'required',
@@ -152,6 +156,7 @@ class DataGuruController extends Controller
         $guru->alamat = $request->alamat;
         $guru->no_hp = $request->no_hp;
         $guru->nip = $request->nip;
+        $guru->nuptk = $request->nuptk;
         $guru->jabatan = $request->jabatan;
         $guru->pangkat = $request->pangkat;
         $guru->pendidikan = $request->pendidikan;

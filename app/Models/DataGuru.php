@@ -20,7 +20,7 @@ class DataGuru extends Model
 
     protected $fillable = [
 
-        'user_id', 'jenis_kelamin', 'tempat', 'tanggal_lahir', 'alamat', 'no_hp', 'nip', 'jabatan', 'pangkat', 'pendidikan',
+        'user_id', 'jenis_kelamin', 'tempat', 'tanggal_lahir', 'alamat', 'no_hp', 'nuptk', 'nip', 'jabatan', 'pangkat', 'pendidikan',
 
     ];
 

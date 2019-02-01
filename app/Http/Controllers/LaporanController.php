@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
+use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
@@ -78,6 +79,22 @@ class LaporanController extends Controller
         return view('laporan.index', [
             'data' => $data,
             'title' => $title,
+        ]);
+    }
+
+    function print(Request $request) {
+        if (isset($request->bulan)) {
+            $from = date($request->tahun . '-' . $request->bulan . '-01');
+            $to = date($request->tahun . '-' . $request->bulan . '-t');
+
+            $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+        } else {
+            $data = '';
+        }
+        return view('laporan.print', [
+            'data' => $data,
+            'get_bulan' => $request->bulan ? $request->bulan : '',
+            'get_tahun' => $request->tahun ? $request->tahun : '',
         ]);
     }
 }

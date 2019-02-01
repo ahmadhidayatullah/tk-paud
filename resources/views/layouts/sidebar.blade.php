@@ -47,6 +47,7 @@
           <em class="fa fa-bar-chart"></em> Laporan <span data-toggle="collapse" href="#laporan" class="icon pull-right collapsed" aria-expanded="false"><i class="fa fa-plus"></i></span>
         </a>
         <ul class="children collapse" id="laporan" style="">
+            <li class="nav-item"><a class="nav-link {{ is_current_route(['laporan', 'laporan/*']) }}" href="{{route('laporan.print')}}"> Print Laporan</a></li>
             <li class="nav-item"><a class="nav-link {{ is_current_route(['laporan', 'laporan/*']) }}" href="{{route('laporan')}}"> Semua Laporan</a></li>
             <li class="nav-item"><a class="nav-link {{ is_current_route(['laporan', 'laporan/*']) }}" href="{{route('laporan',['semester' => '1'])}}"> Tahun Ajar 2018/2019 Semester 1</a></li>
             <li class="nav-item"><a class="nav-link {{ is_current_route(['laporan', 'laporan/*']) }}" href="{{route('laporan',['semester' => '2'])}}"> Tahun Ajar 2018/2019 Semester 2</a></li>

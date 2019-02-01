@@ -17,6 +17,7 @@ class CreateDataGuruTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('nip');
+            $table->string('nuptk');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('jabatan');
             $table->string('pangkat');

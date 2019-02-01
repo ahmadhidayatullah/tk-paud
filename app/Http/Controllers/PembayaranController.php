@@ -44,7 +44,9 @@ class PembayaranController extends Controller
             \LogActivity::addToLog("Tambah data pembayaran ID #{$data->id}.");
         }
 
-        return redirect()->route('pembayaran')->with('message', format_message('Transaksi berhasil !', 'success'));
+        $link = "<a target='_blank' href=" . route('print.kwitansi', $data->id) . " class='btn btn-primary'>Print Kwitansi</a>";
+
+        return redirect()->route('pembayaran')->with('message', format_message('Transaksi berhasil ! ' . $link, 'success'));
     }
 
     public function getSiswa(Request $request)

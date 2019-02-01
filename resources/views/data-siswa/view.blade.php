@@ -136,7 +136,7 @@
         <div class="card-block">
           <div class="divider"></div>
           <h3 class="card-title">History pembayaran</h3>
-          <h6 class="card-subtitle mb-2 text-muted">Administrasi</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Administrasi <a target="_blank" class="btn btn-sm btn-default" href="{{route('print.pendaftaran',$data->id)}}">Print</a></h6>
           <ul class="timeline">
             @foreach ($data->getPembayaran as $item)  
             @if ($item->jenis_pembayaran != 'bulanan')    

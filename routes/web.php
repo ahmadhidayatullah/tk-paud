@@ -60,7 +60,7 @@ Route::group($all_user, function () {
     Route::group(['prefix' => 'data-siswa'], function () {
         Route::get('/{siswa?}', 'DataSiswaController@index')->name('data-siswa');
         Route::get('/create/siswa', 'DataSiswaController@create')->name('data-siswa.create');
-        Route::get('/{id}', 'DataSiswaController@show')->name('data-siswa.show');
+        Route::get('/lihat/{id}', 'DataSiswaController@show')->name('data-siswa.show');
         Route::post('/', 'DataSiswaController@store')->name('data-siswa.create.submit');
         // Route::get('/edit/{id}', 'DataSiswaController@edit')->name('data-siswa.edit');
         // Route::put('/{id}', 'DataSiswaController@update')->name('data-siswa.update');
@@ -76,6 +76,7 @@ Route::group($all_user, function () {
 
     Route::group(['prefix' => 'laporan'], function () {
         Route::get('/{semester?}/{kelompok?}', 'LaporanController@index')->name('laporan');
+        Route::get('/lihat/print/bulanan', 'LaporanController@print')->name('laporan.print');
     });
 
     Route::group(['prefix' => 'kontrol-penitipan'], function () {
@@ -84,6 +85,12 @@ Route::group($all_user, function () {
         Route::post('/', 'KontrolPenitipanController@store')->name('kontrol-penitipan.create.submit');
         Route::get('/getSiswa', 'KontrolPenitipanController@getSiswa')->name('kontrol-penitipan.getSiswa');
         // Route::delete('/{id}', 'KontrolPenitipanController@destroy')->name('kontrol-penitipan.delete');
+    });
+
+    Route::group(['prefix' => 'print'], function () {
+        Route::get('/{id_siswa}', 'PrintController@pendaftaran')->name('print.pendaftaran');
+        Route::get('/kwitansi/{id_pembayaran}', 'PrintController@kwitansi')->name('print.kwitansi');
+        Route::get('/laporan/bulanan', 'PrintController@bulanan')->name('print.bulanan');
     });
 
     Route::group(['prefix' => 'log'], function () {

@@ -100,7 +100,7 @@ class DataSiswaController extends Controller
             ]);
 
             if ($request->jenis_bayar == 'cash') {
-                if ($request->jenis_biaya_siswa_id != 1 || $request->jenis_biaya_siswa_id != 4) {
+                if ($request->jenis_biaya_siswa_id == 2 || $request->jenis_biaya_siswa_id == 3) {
                     Pembayaran::insert([
                         ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
                         ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pangkal, 'created_at' => date('Y-m-d H:i:s')],
@@ -115,7 +115,7 @@ class DataSiswaController extends Controller
                     ]);
                 }
             } else {
-                if ($request->jenis_biaya_siswa_id != 1 || $request->jenis_biaya_siswa_id != 4) {
+                if ($request->jenis_biaya_siswa_id == 2 || $request->jenis_biaya_siswa_id == 3) {
                     Pembayaran::insert([
                         ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
                         ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $request->cicilan, 'created_at' => date('Y-m-d H:i:s')],
@@ -134,8 +134,8 @@ class DataSiswaController extends Controller
             \LogActivity::addToLog("Tambah data user ID #{$user->id}.");
             \LogActivity::addToLog("Tambah data Guru ID #{$siswa->id}.");
         }
-
-        return redirect()->route('data-siswa')->with('message', format_message('Berhasil menyimpan data !', 'success'));
+        $link = "<a target='_blank' href=" . route('print.pendaftaran', $siswa->id) . " class='btn btn-primary'>Print Kwitansi</a>";
+        return redirect()->route('data-siswa')->with('message', format_message('Berhasil menyimpan data ! ' . $link, 'success'));
     }
 
     public function show($id)

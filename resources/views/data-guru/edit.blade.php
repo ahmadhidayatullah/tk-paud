@@ -17,6 +17,15 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label class="col-md-3 col-form-label">NUPTK</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('nuptk') ? ' is-invalid' : '' }}" placeholder="nuptk" name="nuptk" value="{{$data->nuptk}}" required>
+                        @if ($errors->has('nuptk')) 
+                          <small class="form-text text-muted">{{$errors->first('nuptk')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label class="col-md-3 col-form-label">Jenis Kelamin</label>
                       <div class="col-md-9">
                         {{csrf_field()}}
