@@ -152,15 +152,24 @@
             @foreach ($data as $item)    
                 <tr class="item">
                     <td>
-                        {{ucwords($item->jenis_pembayaran)}}
+                        {{ucwords($item->jenis_pembayaran)}} {{$kwitansi ? ' + Denda' : ''}}
                     </td>
-                    
+                    {{-- @if ($kwitansi)    
+                        <td>
+                            {{ucwords($item->jenis_pembayaran)}}
+                        </td>
+                    @endif --}}
+
                     <td>
-                        {{\GeneralHelper::toRupiah($item->bayar)}}
+                        {{\GeneralHelper::toRupiah($item->bayar)}} {{$kwitansi ? ' + '.\GeneralHelper::toRupiah($item->total_denda) : ''}}
                     </td>
                 </tr>
                 @php
+                if ($kwitansi) {
+                    $bayar = $bayar + $item->bayar + $item->total_denda;
+                }else{
                     $bayar = $bayar + $item->bayar;
+                }
                 @endphp
             @endforeach
             

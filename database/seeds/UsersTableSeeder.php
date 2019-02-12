@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         //seeder tahun ke
         $data = [
             [
-                'name' => 'ahmad',
+                'name' => 'admin',
                 'username' => 'admin',
                 'password' => bcrypt('admin'),
                 'role_id' => 1,

@@ -20,6 +20,7 @@ class CreateJenisBiayaSiswaTable extends Migration
             $table->integer('pangkal');
             $table->integer('seragam')->default(0);
             $table->integer('bulanan');
+            $table->integer('peralihan')->default(0);
             $table->integer('denda_permenit')->default(0);
             $table->string('keterangan')->nullable();
             $table->timestamps();

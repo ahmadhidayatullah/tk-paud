@@ -106,12 +106,10 @@ class PembayaranController extends Controller
 
         $getDataSiswa = DataSiswa::findOrFail($siswa);
 
-        $terlambat = 0;
+        $count = 0;
         foreach ($penitipan as $item) {
-            $terlambat = $terlambat + $item->keterlambatan_jemput;
+            $count = $count + $getDataSiswa->getJenisBiayaById->denda_permenit * ceil(($item->keterlambatan_jemput / 15));
         }
-
-        $count = $getDataSiswa->getJenisBiayaById->denda_permenit * $terlambat;
 
         $respone = [
             'bayar' => $getDataSiswa->getJenisBiayaById->bulanan,

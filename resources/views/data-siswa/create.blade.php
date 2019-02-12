@@ -184,12 +184,19 @@
   
   $('#jenis_siswa').on('change',function(){
     let tk = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 2.300.000</li><li>seragam 5 pasang 750.000</li><li>uang bulanan 350.000</li></ul></div></div>";
+    let tk2 = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 2.300.000</li><li>seragam 5 pasang 750.000</li><li>uang bulanan 350.000</li><li>uang peralihan 80.000</li></ul></div></div>";
     let seharian = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 1.500.000</li><li>uang bulanan 800.000</li><li>08.00 - 17.00</li></ul></div></div>";
     let stengah_hari = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 1.500.000</li><li>uang bulanan 650.000</li><li>11.30 - 17.00</li></ul></div></div>";
     
     let jenis_siswa = $("#jenis_siswa option:selected").val();
+    let kelas = $("#kelas option:selected").val();
+    
     if (jenis_siswa == '1' || jenis_siswa == '4') {
-      $("#rincian").html(tk);
+      if (kelas == 'B' && jenis_siswa == '1') {
+        $("#rincian").html(tk2);
+      }else{
+        $("#rincian").html(tk);
+      }
     }else if(jenis_siswa == '2'){
       $("#rincian").html(seharian);
     }else if(jenis_siswa == '3'){

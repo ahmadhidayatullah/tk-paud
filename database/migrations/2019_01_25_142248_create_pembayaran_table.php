@@ -15,7 +15,7 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('jenis_pembayaran', ['bulanan', 'pangkal', 'pendaftaran', 'seragam']);
+            $table->enum('jenis_pembayaran', ['bulanan', 'pangkal', 'pendaftaran', 'seragam', 'peralihan']);
             $table->unsignedInteger('data_siswa_id');
             $table->date('tanggal');
             $table->integer('bayar');

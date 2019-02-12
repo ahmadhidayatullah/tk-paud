@@ -107,12 +107,22 @@ class DataSiswaController extends Controller
                         ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
                     ]);
                 } else {
-                    Pembayaran::insert([
-                        ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
-                        ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pangkal, 'created_at' => date('Y-m-d H:i:s')],
-                        ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
-                        ['jenis_pembayaran' => 'seragam', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->seragam, 'created_at' => date('Y-m-d H:i:s')],
-                    ]);
+                    if ($request->kelas == 'B' && $request->jenis_biaya_siswa_id == 1) {
+                        Pembayaran::insert([
+                            ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pangkal, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'seragam', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->seragam, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'peralihan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->peralihan, 'created_at' => date('Y-m-d H:i:s')],
+                        ]);
+                    } else {
+                        Pembayaran::insert([
+                            ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pangkal, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'seragam', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->seragam, 'created_at' => date('Y-m-d H:i:s')],
+                        ]);
+                    }
                 }
             } else {
                 if ($request->jenis_biaya_siswa_id == 2 || $request->jenis_biaya_siswa_id == 3) {
@@ -122,12 +132,23 @@ class DataSiswaController extends Controller
                         ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
                     ]);
                 } else {
-                    Pembayaran::insert([
-                        ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
-                        ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $request->cicilan, 'created_at' => date('Y-m-d H:i:s')],
-                        ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
-                        ['jenis_pembayaran' => 'seragam', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->seragam, 'created_at' => date('Y-m-d H:i:s')],
-                    ]);
+                    if ($request->kelas == 'B' && $request->jenis_biaya_siswa_id == 1) {
+                        Pembayaran::insert([
+                            ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $request->cicilan, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'seragam', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->seragam, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'peralihan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->peralihan, 'created_at' => date('Y-m-d H:i:s')],
+                        ]);
+                    } else {
+
+                        Pembayaran::insert([
+                            ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $request->cicilan, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
+                            ['jenis_pembayaran' => 'seragam', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->seragam, 'created_at' => date('Y-m-d H:i:s')],
+                        ]);
+                    }
                 }
             }
 

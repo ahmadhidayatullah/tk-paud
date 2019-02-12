@@ -53,7 +53,9 @@ class KontrolPenitipanController extends Controller
     public function getSiswa(Request $request)
     {
         $text = isset($request->text) ? $request->text : '';
-        $data = DataSiswa::where('nama', 'LIKE', '%' . trim($text) . '%')->get();
+        $data = DataSiswa::where('nama', 'LIKE', '%' . trim($text) . '%')
+            ->where('jenis_biaya_siswa_id', 2)
+            ->orWhere('jenis_biaya_siswa_id', 3)->get();
         if ($data->count() < 1) {
             return '<option> -- Data Tidak Ada -- </option>';
         } else {

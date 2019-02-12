@@ -12,6 +12,7 @@ class PrintController extends Controller
         $data = Pembayaran::where('data_siswa_id', $id_siswa)->get();
         return view('print.pendaftaran', [
             'data' => $data,
+            'kwitansi' => false,
         ]);
     }
 
@@ -20,6 +21,7 @@ class PrintController extends Controller
         $data = Pembayaran::where('id', $id_pembayaran)->get();
         return view('print.pendaftaran', [
             'data' => $data,
+            'kwitansi' => true,
         ]);
     }
 
