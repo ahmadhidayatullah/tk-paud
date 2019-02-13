@@ -8,21 +8,10 @@
               <form action="{{route('laporan.print')}}">
               <div class="row">
                       <div class="col-lg-4 col-sm-4">
-                          <select class="custom-select form-control" name="bulan" id="bulan">
-                              @php
-                                  $bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-                              @endphp
-                              @foreach ($bulan as $item=>$key)
-                                  <option value="{{++$item}}" {{(Request::get('bulan') == $item)?'selected':''}}>{{$key}}</option>
-                              @endforeach
-                          </select>
+                          <input type="date" class="form-control" name="start">
                       </div>
                       <div class="col-lg-4 col-sm-4">
-                          <select class="custom-select form-control" name="tahun" id="tahun">
-                              @for ($i = 2019; $i <= 2022; $i++)  
-                                <option value="{{$i}}" {{(Request::get('tahun') == $i)?'selected':''}}>{{$i}}</option>
-                              @endfor
-                          </select>
+                        <input type="date" class="form-control" name="end">
                       </div>
                       <div class="col-lg-4 col-sm-4">
                           <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Cari</button>
@@ -36,7 +25,7 @@
     <div class="col-md-12 col-lg-12">
             <div class="card mb-4">
                 <div class="card-block">
-                    <h3 class="card-title">Laporan <a target="_blank" class="btn btn-default" href="{{route('print.bulanan',['bulan' => $get_bulan,'tahun'=>$get_tahun])}}">Print <i class="fa fa-print"></i></a></h3>
+                    <h3 class="card-title">Laporan <a target="_blank" class="btn btn-default" href="{{route('print.bulanan',['start' => $get_start,'end'=>$get_end])}}">Print <i class="fa fa-print"></i></a></h3>
                   <div class="table-responsive">
                       @if(session('message')) {!!session('message')!!} @endif
                     <table class="table table-striped" id="dataTable">

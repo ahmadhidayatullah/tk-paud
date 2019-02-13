@@ -91,6 +91,8 @@ Route::group($all_user, function () {
         Route::get('/{id_siswa}', 'PrintController@pendaftaran')->name('print.pendaftaran');
         Route::get('/kwitansi/{id_pembayaran}', 'PrintController@kwitansi')->name('print.kwitansi');
         Route::get('/laporan/bulanan', 'PrintController@bulanan')->name('print.bulanan');
+        Route::get('/siswa/data', 'PrintController@siswa')->name('print.siswa');
+        Route::get('/guru/data', 'PrintController@guru')->name('print.guru');
     });
 
     Route::group(['prefix' => 'log'], function () {

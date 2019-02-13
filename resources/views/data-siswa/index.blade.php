@@ -8,6 +8,7 @@
                     @if (Auth::user()->role_id == 1)    
                   <a href="{{route('data-siswa.create')}}" class="btn btn-md btn-default">Tambah Siswa</a>
                   @endif
+                  <a href="{{route('print.siswa')}}" target="_blank" class="btn btn-md btn-default">Print</a>
                 </h3>
                 <div class="table-responsive">
                     @if(session('message')) {!!session('message')!!} @endif

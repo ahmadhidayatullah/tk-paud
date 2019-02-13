@@ -8,28 +8,37 @@
                     @if (Auth::user()->role_id == 1)    
                   <a href="{{route('data-guru.create')}}" class="btn btn-md btn-default">Tambah Guru</a>
                   @endif
+                  <a href="{{route('print.guru')}}" target="_blank" class="btn btn-md btn-default">Print</a>
                 </h3>
                 <div class="table-responsive">
                     @if(session('message')) {!!session('message')!!} @endif
                     <table class="table table-striped table-bordered zero-configuration" id="dataTable">
                       <thead>
                         <tr>
-                          <th>NIP</th>
+                          <th>No</th>
                           <th>Nama</th>
-                          <th>Jenis Kelamin</th>
-                          <th>No. Hp</th>
+                          <th>NIP</th>
+                          <th>Jabatan</th>
+                          <th>Tempat/Tgl Lahir</th>
+                          <th>Pangkat</th>
+                          <th>Pendidikan</th>
                           <th>Alamat</th>
+                          <th>No. Hp</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($data as $item)
+                        @foreach ($data as $key=>$item)
                         <tr>
-                          <td>{{$item->nip}}</td>
+                          <td>{{++$key}}</td>
                           <td>{{ucwords($item->getUserById->name)}}</td>
-                          <td>{{$item->jenis_kelamin}}</td>
-                          <td>{{$item->no_hp}}</td>
+                          <td>{{$item->nip}}</td>
+                          <td>{{$item->jabatan}}</td>
+                          <td>{{$item->tempat.'/'.$item->tanggal_lahir}}</td>
+                          <td>{{$item->pangkat}}</td>
+                          <td>{{$item->pendidikan}}</td>
                           <td>{{$item->alamat}}</td>
+                          <td>{{$item->no_hp}}</td>
                           <td>
                             <a href="{{route('data-guru.edit',$item->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                               class="editor_view"><i class="fa fa-pencil"></i></a>
@@ -42,12 +51,16 @@
                         @endforeach
                       </tbody>
                       <tfoot>
-                        <tr>
-                          <th>NIP</th>
+                       <tr>
+                          <th>No</th>
                           <th>Nama</th>
-                          <th>Jenis Kelamin</th>
-                          <th>No. Hp</th>
+                          <th>NIP</th>
+                          <th>Jabatan</th>
+                          <th>Tempat/Tgl Lahir</th>
+                          <th>Pangkat</th>
+                          <th>Pendidikan</th>
                           <th>Alamat</th>
+                          <th>No. Hp</th>
                           <th>Action</th>
                         </tr>
                       </tfoot>

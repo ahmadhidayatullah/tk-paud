@@ -100,38 +100,26 @@
         <table class="" id="">
             <thead>
                 <tr class="heading">
+                    <th>NIS</th>
                     <th>Nama</th>
+                    <th>kelas</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Jenis Siswa</th>
                     <th>Jenis Bayar</th>
-                    <th>Tanggal</th>
-                    <th>Bayar</th>
-                    <th>Denda</th>
-                    <th>Sub Total</th>
                 </tr>
             </thead>
             <tbody>
-                @php
-                    $total = 0;
-                @endphp
                 @foreach ($data as $item)
                 <tr class="item">
-                    <td>{{ucwords($item->getSiswaById->nama)}}</td>
-                    <td>{{ucwords($item->jenis_pembayaran)}}</td>
-                    <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
-                    <td>{{\GeneralHelper::toRupiah($item->bayar)}}</td>
-                    <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
-                    <td>{{\GeneralHelper::toRupiah($item->bayar+$item->total_denda)}}</td>
-                    @php
-                        $total = $total + $item->bayar + $item->total_denda;
-                    @endphp
+                    <td>{{$item->nis}}</td>
+                    <td>{{ucwords($item->nama)}}</td>
+                    <td>{{$item->kelas}}</td>
+                    <td>{{$item->jenis_kelamin}}</td>
+                    <td>{{$item->getJenisBiayaById->nama}}</td>
+                    <td>{{ucwords($item->jenis_bayar)}}</td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
-                <tr class="heading">
-                    <th colspan="5">Total</th>
-                    <th>{{\GeneralHelper::toRupiah($total)}}</th>
-                </tr>
-            </tfoot>
         </table>
 <br><br>
         <table>

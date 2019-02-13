@@ -83,9 +83,9 @@ class LaporanController extends Controller
     }
 
     function print(Request $request) {
-        if (isset($request->bulan)) {
-            $from = date($request->tahun . '-' . $request->bulan . '-01');
-            $to = date($request->tahun . '-' . $request->bulan . '-t');
+        if (isset($request->start)) {
+            $from = $request->start;
+            $to = $request->end;
 
             $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
         } else {
@@ -93,8 +93,8 @@ class LaporanController extends Controller
         }
         return view('laporan.print', [
             'data' => $data,
-            'get_bulan' => $request->bulan ? $request->bulan : '',
-            'get_tahun' => $request->tahun ? $request->tahun : '',
+            'get_start' => (isset($from)) ? $from : '',
+            'get_end' => (isset($to)) ? $to : '',
         ]);
     }
 }

@@ -27,13 +27,28 @@ class PrintController extends Controller
 
     public function bulanan(Request $request)
     {
-        $from = date($request->tahun . '-' . $request->bulan . '-01');
-        $to = date($request->tahun . '-' . $request->bulan . '-t');
+        $from = $request->start;
+        $to = $request->end;
 
         $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
         return view('print.bulanan', [
             'data' => $data,
-            'bulan' => $request->bulan,
+        ]);
+    }
+
+    public function siswa()
+    {
+        $data = \App\Models\DataSiswa::all();
+        return view('print.siswa', [
+            'data' => $data,
+        ]);
+    }
+
+    public function guru()
+    {
+        $data = \App\Models\DataGuru::all();
+        return view('print.guru', [
+            'data' => $data,
         ]);
     }
 

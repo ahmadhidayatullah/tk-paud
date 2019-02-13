@@ -99,7 +99,7 @@
     </style>
 </head>
 
-<body>
+<body onload="window.print()">
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
@@ -179,6 +179,21 @@
                 <td>
                    Total: {{\GeneralHelper::toRupiah($bayar)}}
                 </td>
+            </tr>
+        </table>
+        <br><br>
+        <table>
+            <tr>
+                <td>
+                    Mengetahui<br>
+                    Kepala TK Asoka Makassar
+                    <br><br><br><br>
+                </td>
+                <td>Guru Kelompok ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br></td>
+            </tr>
+            <tr>
+                <td>(Nurmala Usman, S.Pd)</td>
+                <td><pre>(                   )</pre></td>
             </tr>
         </table>
     </div>
