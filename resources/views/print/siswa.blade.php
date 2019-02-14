@@ -96,16 +96,18 @@
 </head>
 <body onload="window.print()">
     <div class="invoice-box">
-        <h4>Laporan</h4>
+        <h4>DATA ANAK DIDIK</h4>
+        <h4>KELOMPOK </h4>
         <table class="" id="">
             <thead>
                 <tr class="heading">
                     <th>NIS</th>
                     <th>Nama</th>
-                    <th>kelas</th>
                     <th>Jenis Kelamin</th>
-                    <th>Jenis Siswa</th>
-                    <th>Jenis Bayar</th>
+                    <th>Tempat Tgl Lahir</th>
+                    <th>Nama Orang Tua dan Pekerjaan</th>
+                    <th>Alamat</th>
+                    <th>No. Hp</th>
                 </tr>
             </thead>
             <tbody>
@@ -113,10 +115,11 @@
                 <tr class="item">
                     <td>{{$item->nis}}</td>
                     <td>{{ucwords($item->nama)}}</td>
-                    <td>{{$item->kelas}}</td>
                     <td>{{$item->jenis_kelamin}}</td>
-                    <td>{{$item->getJenisBiayaById->nama}}</td>
-                    <td>{{ucwords($item->jenis_bayar)}}</td>
+                    <td>{{$item->tempat.' / '.$item->tanggal_lahir}}</td>
+                    <td>{{ucwords($item->getUserById->name).' / '.$item->pekerjaan_orang_tua}}</td>
+                    <td>{{$item->alamat}}</td>
+                    <td>{{$item->no_hp}}</td>
                 </tr>
                 @endforeach
             </tbody>

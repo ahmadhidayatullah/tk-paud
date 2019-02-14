@@ -96,7 +96,7 @@
 </head>
 <body onload="window.print()">
     <div class="invoice-box">
-        <h4>Laporan</h4>
+        <h4>Laporan Data Guru</h4>
         <table class="" id="">
             <thead>
                 <tr class="heading">

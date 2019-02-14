@@ -17,10 +17,11 @@
                         <tr>
                           <th>NIS</th>
                           <th>Nama</th>
-                          <th>kelas</th>
                           <th>Jenis Kelamin</th>
-                          <th>Jenis Siswa</th>
-                          <th>Jenis Bayar</th>
+                          <th>Tempat Tgl Lahir</th>
+                          <th>Nama Orang Tua dan Pekerjaan</th>
+                          <th>Alamat</th>
+                          <th>No. Hp</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -29,10 +30,11 @@
                         <tr>
                           <td>{{$item->nis}}</td>
                           <td>{{ucwords($item->nama)}}</td>
-                          <td>{{$item->kelas}}</td>
                           <td>{{$item->jenis_kelamin}}</td>
-                          <td>{{$item->getJenisBiayaById->nama}}</td>
-                          <td>{{ucwords($item->jenis_bayar)}}</td>
+                          <td>{{$item->tempat.' / '.$item->tanggal_lahir}}</td>
+                          <td>{{ucwords($item->getUserById->name).' / '.$item->pekerjaan_orang_tua}}</td>
+                          <td>{{$item->alamat}}</td>
+                          <td>{{$item->no_hp}}</td>
                           <td>
                             <a href="{{route('data-siswa.show',$item->id)}}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                               class="editor_view"><i class="fa fa-expand"></i></a>
