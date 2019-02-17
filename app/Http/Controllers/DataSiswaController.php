@@ -2,34 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DataSiswaExport;
 use App\Models\DataSiswa;
 use App\Models\JenisBiayaSiswa;
 use App\Models\Pembayaran;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Validator;
 
 class DataSiswaController extends Controller
 {
-    public function index($siswa = '')
+    public function index(Request $request, $siswa = '')
     {
-        if ($siswa == 'tk') {
-            $title = "Siswa TK";
-            $data = DataSiswa::where('jenis_biaya_siswa_id', 1)->orderBy('id', 'DESC')->get();
-        } elseif ($siswa == 'kb') {
-            $title = "Kelompok Bermain";
-            $data = DataSiswa::where('jenis_biaya_siswa_id', 4)->orderBy('id', 'DESC')->get();
-        } elseif ($siswa == 'tpa') {
-            $title = "Kelompok Bermain";
-            $data = DataSiswa::where('jenis_biaya_siswa_id', 2)->orWhere('jenis_biaya_siswa_id', 3)->orderBy('id', 'DESC')->get();
+        $limit = $request->get('limit');
+        if ($limit == 'all') {
+            $title = "Semua Data Siswa";
+            $data = DataSiswa::orderBy('id', 'DESC')->get();
+        } elseif ($limit == '1') {
+            $title = "Data Siswa Tahun Ajar 2018/2019";
+            $data = DataSiswa::whereYear('created_at', 2018)->orderBy('id', 'DESC')->get();
+        } elseif ($limit == '2') {
+            $title = "Data Siswa Tahun Ajar 2019/2020";
+            $data = DataSiswa::whereYear('created_at', 2019)->orderBy('id', 'DESC')->get();
         } else {
-            if (Auth::user()->role_id == 3) {
-                $title = "Halaman Siswa";
-                $data = DataSiswa::where('user_id', Auth::user()->id)->get();
+
+            if ($siswa == 'tk') {
+                $title = "Siswa TK";
+                $data = DataSiswa::where('jenis_biaya_siswa_id', 1)->orderBy('id', 'DESC')->get();
+            } elseif ($siswa == 'kb') {
+                $title = "Kelompok Bermain";
+                $data = DataSiswa::where('jenis_biaya_siswa_id', 4)->orderBy('id', 'DESC')->get();
+            } elseif ($siswa == 'tpa') {
+                $title = "Kelompok Bermain";
+                $data = DataSiswa::where('jenis_biaya_siswa_id', 2)->orWhere('jenis_biaya_siswa_id', 3)->orderBy('id', 'DESC')->get();
             } else {
-                $title = "Halaman Siswa";
-                $data = DataSiswa::orderBy('id', 'DESC')->get();
+                if (Auth::user()->role_id == 3) {
+                    $title = "Halaman Siswa";
+                    $data = DataSiswa::where('user_id', Auth::user()->id)->get();
+                } else {
+                    $title = "Halaman Siswa";
+                    $data = DataSiswa::orderBy('id', 'DESC')->get();
+                }
             }
         }
         return view('data-siswa.index', [
@@ -183,5 +198,10 @@ class DataSiswaController extends Controller
             return redirect()->route('data-siswa')->with('message', format_message('Cannot delete! The data has relation in User', 'danger'));
         }
 
+    }
+
+    public function export()
+    {
+        return Excel::download(new DataSiswaExport, 'data_siswa.xlsx');
     }
 }

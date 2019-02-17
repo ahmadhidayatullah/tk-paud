@@ -98,4 +98,8 @@ Route::group($all_user, function () {
     Route::group(['prefix' => 'log'], function () {
         Route::get('/', 'LogActivityController@index')->name('log');
     });
+
+    Route::group(['prefix' => 'export'], function () {
+        Route::get('/data-siswa', 'DataSiswaController@export')->name('export.data-siswa');
+    });
 });

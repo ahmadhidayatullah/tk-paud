@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +229,8 @@ return [
         'LogActivity' => App\Helpers\LogActivity::class,
         'GeneralHelper' => App\Helpers\General::class,
         'Biaya' => App\Helpers\Biaya::class,
+        //export
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

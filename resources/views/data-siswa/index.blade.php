@@ -7,8 +7,14 @@
                 <h3 class="card-title">{{$title}}
                     @if (Auth::user()->role_id == 1)    
                   <a href="{{route('data-siswa.create')}}" class="btn btn-md btn-default">Tambah Siswa</a>
+                  <a href="{{route('export.data-siswa')}}" target="_blank" class="btn btn-md btn-default">Export</a>
                   @endif
                   <a href="{{route('print.siswa')}}" target="_blank" class="btn btn-md btn-default">Print</a>
+                  <select name="select-limit" id="limit-page-show" class="btn btn-common">
+                    <option value="{{route('data-siswa', ['siswa' => '','limit' => 'all'])}}" {{ (Request::get('limit') == 'all') ? 'selected' : ''}}>All</option>
+                    <option value="{{route('data-siswa', ['siswa' => '','limit' => '1'])}}" {{ (Request::get('limit') == '1') ? 'selected' : ''}}>Tahun 2018/2019</option>
+                    <option value="{{route('data-siswa', ['siswa' => '','limit' => '2'])}}" {{ (Request::get('limit') == '2') ? 'selected' : ''}}>Tahun 2019/2020</option>
+                  </select>
                 </h3>
                 <div class="table-responsive">
                     @if(session('message')) {!!session('message')!!} @endif
@@ -99,5 +105,11 @@
   $(document).ready(function() {
     $('#dataTable').DataTable();
   });
+</script>
+<script type="text/javascript">
+	$(document).on('change', 'select[name="select-limit"]', function(){
+        location.href = $(this).val();
+  });
+
 </script>
 @endsection
