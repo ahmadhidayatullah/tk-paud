@@ -97,7 +97,7 @@
 <body onload="window.print()">
     <div class="invoice-box">
         <h4>Laporan</h4>
-        <table class="" id="">
+        <table class="" id="" border="1">
             <thead>
                 <tr class="heading">
                     <th>Nama</th>

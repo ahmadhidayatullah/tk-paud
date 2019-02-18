@@ -22,6 +22,7 @@ class CreateUmumsTable extends Migration
             $table->string('b2');
             $table->string('b3');
             $table->string('b4');
+            $table->string('pengelola');
             $table->timestamps();
         });
     }

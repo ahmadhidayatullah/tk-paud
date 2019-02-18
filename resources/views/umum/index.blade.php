@@ -12,6 +12,15 @@
                   {{csrf_field()}}
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Pengelola</label>
+                  <div class="col-md-9">
+                    <input type="text" class="form-control {{ $errors->has('pengelola') ? ' is-invalid' : '' }}" value="{{ $data->pengelola }}" placeholder="Pengelola" name="pengelola" required>
+                    @if ($errors->has('pengelola')) 
+                      <small class="form-text text-muted">{{$errors->first('pengelola')}}</small>
+                    @endif
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label class="col-md-3 col-form-label">Kepala Sekolah</label>
                   <div class="col-md-9">
                     <input type="text" class="form-control {{ $errors->has('kepsek') ? ' is-invalid' : '' }}" value="{{ $data->kepsek }}" placeholder="Kepala Sekolah" name="kepsek" required>

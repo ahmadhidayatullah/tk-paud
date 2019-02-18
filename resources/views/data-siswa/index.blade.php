@@ -18,6 +18,8 @@
                         <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b2'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B2</a>
                         <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b3'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B3</a>
                         <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b4'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B4</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'kb'])}}" target="_blank"><em class="fa fa-print mr-1"></em> KB</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'tpa'])}}" target="_blank"><em class="fa fa-print mr-1"></em> TPA</a>
                       </div>
                   </div>
                   <select name="select-limit" id="limit-page-show" class="btn btn-common">
@@ -34,6 +36,7 @@
                     <table class="table table-striped table-bordered zero-configuration" id="dataTable">
                       <thead>
                         <tr>
+                          <th>No.</th>
                           <th>NIS</th>
                           <th>Nama</th>
                           <th>Jenis Kelamin</th>
@@ -46,8 +49,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($data as $item)
+                        @foreach ($data as $key=>$item)
                         <tr>
+                          <td>{{++$key}}</td>
                           <td>{{$item->nis}}</td>
                           <td>{{ucwords($item->nama)}}</td>
                           <td>{{$item->jenis_kelamin}}</td>
@@ -71,6 +75,7 @@
                       </tbody>
                       <tfoot>
                         <tr>
+                          <th>No.</th>
                           <th>NIS</th>
                           <th>Nama</th>
                           <th>kelas</th>

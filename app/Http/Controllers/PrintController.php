@@ -39,11 +39,25 @@ class PrintController extends Controller
     public function siswa(Request $request)
     {
         $ket = $request->ket;
-        $data = \App\Models\DataSiswa::where('kelas', $ket)->get();
+        if ($ket == 'kb') {
+            $wali = \GeneralHelper::getNameOf()->pengelola;
+            $data = \App\Models\DataSiswa::where('jenis_biaya_siswa_id', 4)->get();
+            $kelas = ' Bermain';
+        } elseif ($ket == 'tpa') {
+            $data = \App\Models\DataSiswa::where('jenis_biaya_siswa_id', 2)
+                ->orWhere('jenis_biaya_siswa_id', 3)
+                ->get();
+            $wali = \GeneralHelper::getNameOf()->pengelola;
+            $kelas = 'Tempat Penitipan Anak';
+        } else {
+            $data = \App\Models\DataSiswa::where('kelas', $ket)->get();
+            $wali = \GeneralHelper::getNameOf()->$ket;
+            $kelas = $ket;
+        }
         return view('print.siswa', [
             'data' => $data,
-            'kelas' => $ket,
-            'wali' => \GeneralHelper::getNameOf()->$ket,
+            'kelas' => $kelas,
+            'wali' => $wali,
         ]);
     }
 

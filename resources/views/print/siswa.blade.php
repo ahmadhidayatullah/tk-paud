@@ -101,6 +101,7 @@
         <table class="" id="" border="1">
             <thead>
                 <tr class="heading">
+                    <th>No.</th>
                     <th>NIS</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
@@ -112,8 +113,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $item)
+                @foreach ($data as $key=>$item)
                 <tr class="item">
+                    <td>{{++$key}}</td>
                     <td>{{$item->nis}}</td>
                     <td>{{ucwords($item->nama)}}</td>
                     <td>{{$item->jenis_kelamin}}</td>

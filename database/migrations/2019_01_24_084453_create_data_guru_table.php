@@ -29,6 +29,7 @@ class CreateDataGuruTable extends Migration
             $table->text('alamat');
             $table->string('no_hp', 20);
             $table->string('tmt_kgb')->nullable();
+            $table->string('ket')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

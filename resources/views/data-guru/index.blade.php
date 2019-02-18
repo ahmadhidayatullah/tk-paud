@@ -25,6 +25,7 @@
                           <th rowspan="2">Alamat</th>
                           <th rowspan="2">No. Hp</th>
                           <th rowspan="2">TMT KGB</th>
+                          <th rowspan="2">Ket</th>
                           <th rowspan="2">Action</th>
                         </tr>
                         <tr>
@@ -49,6 +50,7 @@
                           <td>{{$item->alamat}}</td>
                           <td>{{$item->no_hp}}</td>
                           <td>{{$item->tmt_kgb}}</td>
+                          <td>{{$item->ket}}</td>
                           <td>
                             <a href="{{route('data-guru.edit',$item->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                               class="editor_view"><i class="fa fa-pencil"></i></a>
@@ -60,20 +62,6 @@
                         </tr>
                         @endforeach
                       </tbody>
-                      <tfoot>
-                       <tr>
-                          <th>No</th>
-                          <th>Nama</th>
-                          <th>NIP</th>
-                          <th>Jabatan</th>
-                          <th>Tempat/Tgl Lahir</th>
-                          <th>Pangkat</th>
-                          <th>Pendidikan</th>
-                          <th>Alamat</th>
-                          <th>No. Hp</th>
-                          <th>Action</th>
-                        </tr>
-                      </tfoot>
                     </table>
                 </div>
             </div>

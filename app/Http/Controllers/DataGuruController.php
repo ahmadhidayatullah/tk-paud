@@ -78,6 +78,7 @@ class DataGuruController extends Controller
                 'pendidikan_jenjang' => $request->pendidikan_jenjang,
                 'pendidikan_jurusan' => $request->pendidikan_jurusan,
                 'tmt_kgb' => $request->tmt_kgb,
+                'ket' => $request->ket,
             ]);
             \LogActivity::addToLog("Tambah data user ID #{$user->id}.");
             \LogActivity::addToLog("Tambah data Guru ID #{$guru->id}.");
@@ -166,6 +167,7 @@ class DataGuruController extends Controller
         $guru->pendidikan_jenjang = $request->pendidikan_jenjang;
         $guru->pendidikan_jurusan = $request->pendidikan_jurusan;
         $guru->tmt_kgb = $request->tmt_kgb;
+        $guru->ket = $request->ket;
         $guru->getUserById->save();
         $guru->save();
 

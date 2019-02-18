@@ -110,6 +110,7 @@
                     <th rowspan="2">Alamat</th>
                     <th rowspan="2">No. Hp</th>
                     <th rowspan="2">TMT KGB</th>
+                    <th rowspan="2">KET</th>
                   </tr>
                   <tr class="heading">
                     <th>GOL</th>
@@ -133,6 +134,7 @@
                     <td>{{$item->alamat}}</td>
                     <td>{{$item->no_hp}}</td>
                     <td>{{$item->tmt_kgb}}</td>
+                    <td>{{$item->ket}}</td>
                 </tr>
                 @endforeach
             </tbody>

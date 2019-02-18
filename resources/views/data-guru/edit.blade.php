@@ -131,6 +131,15 @@
                         @endif
                       </div>
                     </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Keterangan</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('ket') ? ' is-invalid' : '' }}" placeholder="Keterangan" name="ket" value="{{$data->ket}}">
+                        @if ($errors->has('ket')) 
+                          <small class="form-text text-muted">{{$errors->first('ket')}}</small>
+                        @endif
+                      </div>
+                    </div>
                 </div>
               </div>
         </div>
