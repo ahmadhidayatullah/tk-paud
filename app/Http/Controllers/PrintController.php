@@ -36,11 +36,14 @@ class PrintController extends Controller
         ]);
     }
 
-    public function siswa()
+    public function siswa(Request $request)
     {
-        $data = \App\Models\DataSiswa::all();
+        $ket = $request->ket;
+        $data = \App\Models\DataSiswa::where('kelas', $ket)->get();
         return view('print.siswa', [
             'data' => $data,
+            'kelas' => $ket,
+            'wali' => \GeneralHelper::getNameOf()->$ket,
         ]);
     }
 

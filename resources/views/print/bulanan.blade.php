@@ -141,11 +141,9 @@
                     Kepala TK Asoka Makassar
                     <br><br><br><br>
                 </td>
-                <td>Guru Kelompok ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br></td>
             </tr>
             <tr>
-                <td>(Nurmala Usman, S.Pd)</td>
-                <td><pre>(                   )</pre></td>
+                <td>({{\GeneralHelper::getNameOf()->kepsek}})</td>
             </tr>
         </table>
     </div>

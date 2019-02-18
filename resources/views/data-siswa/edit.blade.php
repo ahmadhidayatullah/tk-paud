@@ -28,6 +28,23 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Agama</label>
+                      <div class="col-md-9">
+                        <select class="form-control" name="agama" id="agama" required>
+                          <option value="">Tidak Ada</option>
+                          <option value="Kristen Katolik">Kristen Katolik</option>
+                          <option value="Kristen Protestan">Kristen Protestan</option>
+                          <option value="Buddha">Buddha</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Islam">Islam</option>
+                          <option value="Konghucu">Konghucu</option>
+                        </select>
+                        @if ($errors->has('agama')) 
+                          <small class="form-text text-muted">{{$errors->first('agama')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label class="col-md-3 col-form-label">Tempat Tanggal Lahir</label>
                       <div class="col-md-4">
                         <input type="text" class="form-control {{ $errors->has('tempat') ? ' is-invalid' : '' }}" value="{{ $data->tempat }}" placeholder="Tempat" name="tempat" required>

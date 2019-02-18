@@ -21,4 +21,11 @@ class General
             return 'Rp. ' . $result;
         }
     }
+
+    public static function getNameOf()
+    {
+        $data = \App\Models\Umum::where('id', 1)->first();
+
+        return $data;
+    }
 }

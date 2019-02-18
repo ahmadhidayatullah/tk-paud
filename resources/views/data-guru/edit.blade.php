@@ -60,11 +60,20 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Pangkat</label>
+                      <label class="col-md-3 col-form-label">Pangkat Gol</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('pangkat') ? ' is-invalid' : '' }}" placeholder="Pangkat" name="pangkat" value="{{$data->pangkat}}" required>
-                        @if ($errors->has('pangkat')) 
-                          <small class="form-text text-muted">{{$errors->first('pangkat')}}</small>
+                        <input type="text" class="form-control {{ $errors->has('pangkat_gol') ? ' is-invalid' : '' }}" placeholder="Pangkat Gol" name="pangkat_gol" value="{{$data->pangkat_gol}}">
+                        @if ($errors->has('pangkat_gol')) 
+                          <small class="form-text text-muted">{{$errors->first('pangkat_gol')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Pangkat TMT</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('pangkat_tmt') ? ' is-invalid' : '' }}" placeholder="Pangkat TMT" name="pangkat_tmt" value="{{$data->pangkat_tmt}}">
+                        @if ($errors->has('pangkat_tmt')) 
+                          <small class="form-text text-muted">{{$errors->first('pangkat_tmt')}}</small>
                         @endif
                       </div>
                     </div>
@@ -78,11 +87,20 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Pendidikan</label>
+                      <label class="col-md-3 col-form-label">Pendidikan Jenjang</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('pendidikan') ? ' is-invalid' : '' }}" placeholder="Pendidikan" name="pendidikan" value="{{$data->pendidikan}}" required>
-                        @if ($errors->has('pendidikan')) 
-                          <small class="form-text text-muted">{{$errors->first('pendidikan')}}</small>
+                        <input type="text" class="form-control {{ $errors->has('pendidikan_jenjang') ? ' is-invalid' : '' }}" placeholder="Pendidikan Jenjang" name="pendidikan_jenjang" value="{{$data->pendidikan_jenjang}}" required>
+                        @if ($errors->has('pendidikan_jenjang')) 
+                          <small class="form-text text-muted">{{$errors->first('pendidikan_jenjang')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Pendidikan Jurusan</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('pendidikan_jurusan') ? ' is-invalid' : '' }}" placeholder="Pendidikan Jurusan" name="pendidikan_jurusan" value="{{$data->pendidikan_jurusan}}" required>
+                        @if ($errors->has('pendidikan_jurusan')) 
+                          <small class="form-text text-muted">{{$errors->first('pendidikan_jurusan')}}</small>
                         @endif
                       </div>
                     </div>
@@ -101,6 +119,15 @@
                         <input type="text" class="form-control {{ $errors->has('no_hp') ? ' is-invalid' : '' }}" placeholder="Nomor Handphone" name="no_hp" value="{{$data->no_hp}}" required>
                         @if ($errors->has('no_hp')) 
                           <small class="form-text text-muted">{{$errors->first('no_hp')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">TMT KGB</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control {{ $errors->has('tmt_kgb') ? ' is-invalid' : '' }}" placeholder="tmt_kgb" name="tmt_kgb" value="{{$data->tmt_kgb}}">
+                        @if ($errors->has('tmt_kgb')) 
+                          <small class="form-text text-muted">{{$errors->first('tmt_kgb')}}</small>
                         @endif
                       </div>
                     </div>

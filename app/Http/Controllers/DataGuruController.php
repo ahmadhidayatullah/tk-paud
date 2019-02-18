@@ -43,8 +43,8 @@ class DataGuruController extends Controller
             'nip' => 'required',
             'nuptk' => 'required',
             'jabatan' => 'required',
-            'pangkat' => 'required',
-            'pendidikan' => 'required',
+            'pendidikan_jenjang' => 'required',
+            'pendidikan_jurusan' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -73,8 +73,11 @@ class DataGuruController extends Controller
                 'nip' => $request->nip,
                 'nuptk' => $request->nuptk,
                 'jabatan' => $request->jabatan,
-                'pangkat' => $request->pangkat,
-                'pendidikan' => $request->pendidikan,
+                'pangkat_gol' => $request->pangkat_gol,
+                'pangkat_tmt' => $request->pangkat_tmt,
+                'pendidikan_jenjang' => $request->pendidikan_jenjang,
+                'pendidikan_jurusan' => $request->pendidikan_jurusan,
+                'tmt_kgb' => $request->tmt_kgb,
             ]);
             \LogActivity::addToLog("Tambah data user ID #{$user->id}.");
             \LogActivity::addToLog("Tambah data Guru ID #{$guru->id}.");
@@ -158,8 +161,11 @@ class DataGuruController extends Controller
         $guru->nip = $request->nip;
         $guru->nuptk = $request->nuptk;
         $guru->jabatan = $request->jabatan;
-        $guru->pangkat = $request->pangkat;
-        $guru->pendidikan = $request->pendidikan;
+        $guru->pangkat_gol = $request->pangkat_gol;
+        $guru->pangkat_tmt = $request->pangkat_tmt;
+        $guru->pendidikan_jenjang = $request->pendidikan_jenjang;
+        $guru->pendidikan_jurusan = $request->pendidikan_jurusan;
+        $guru->tmt_kgb = $request->tmt_kgb;
         $guru->getUserById->save();
         $guru->save();
 

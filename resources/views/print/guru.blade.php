@@ -97,19 +97,26 @@
 <body onload="window.print()">
     <div class="invoice-box">
         <h4>Laporan Data Guru</h4>
-        <table class="" id="">
+        <table class="" id="" border="1">
             <thead>
                 <tr class="heading">
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>NIP</th>
-                    <th>Jabatan</th>
-                    <th>Tempat/Tgl Lahir</th>
-                    <th>Pangkat</th>
-                    <th>Pendidikan</th>
-                    <th>Alamat</th>
-                    <th>No. Hp</th>
-                </tr>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Nama</th>
+                    <th rowspan="2">NIP</th>
+                    <th rowspan="2">Jabatan</th>
+                    <th rowspan="2">Tempat/Tgl Lahir</th>
+                    <th colspan="2">Pangkat Terakhir</th>
+                    <th colspan="2">Pendidikan Terakhir</th>
+                    <th rowspan="2">Alamat</th>
+                    <th rowspan="2">No. Hp</th>
+                    <th rowspan="2">TMT KGB</th>
+                  </tr>
+                  <tr class="heading">
+                    <th>GOL</th>
+                    <th>TMT</th>
+                    <th>Jenjang</th>
+                    <th>Jurusan</th>
+                  </tr>
             </thead>
             <tbody>
                 @foreach ($data as $key=>$item)
@@ -119,10 +126,13 @@
                     <td>{{$item->nip}}</td>
                     <td>{{$item->jabatan}}</td>
                     <td>{{$item->tempat.'/'.$item->tanggal_lahir}}</td>
-                    <td>{{$item->pangkat}}</td>
-                    <td>{{$item->pendidikan}}</td>
+                    <td>{{$item->pangkat_gol}}</td>
+                    <td>{{$item->pangkat_tmt}}</td>
+                    <td>{{$item->pendidikan_jenjang}}</td>
+                    <td>{{$item->pendidikan_jurusan}}</td>
                     <td>{{$item->alamat}}</td>
                     <td>{{$item->no_hp}}</td>
+                    <td>{{$item->tmt_kgb}}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -133,13 +143,11 @@
                 <td>
                     Mengetahui<br>
                     Kepala TK Asoka Makassar
-                    <br><br><br><br>
+                    <br><br><br>
                 </td>
-                <td>Guru Kelompok ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br></td>
             </tr>
             <tr>
-                <td>(Nurmala Usman, S.Pd)</td>
-                <td><pre>(                   )</pre></td>
+                <td>({{\GeneralHelper::getNameOf()->kepsek}})</td>
             </tr>
         </table>
     </div>

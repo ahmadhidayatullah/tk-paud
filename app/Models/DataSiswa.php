@@ -20,7 +20,7 @@ class DataSiswa extends Model
 
     protected $fillable = [
 
-        'user_id', 'nis', 'nama', 'kelas', 'jenis_kelamin', 'tempat', 'tanggal_lahir', 'pekerjaan_orang_tua', 'alamat', 'no_hp', 'jenis_biaya_siswa_id', 'jenis_bayar',
+        'user_id', 'nis', 'nama', 'agama', 'kelas', 'jenis_kelamin', 'tempat', 'tanggal_lahir', 'pekerjaan_orang_tua', 'alamat', 'no_hp', 'jenis_biaya_siswa_id', 'jenis_bayar',
 
     ];
 

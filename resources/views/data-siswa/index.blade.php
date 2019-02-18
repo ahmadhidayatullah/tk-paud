@@ -9,11 +9,24 @@
                   <a href="{{route('data-siswa.create')}}" class="btn btn-md btn-default">Tambah Siswa</a>
                   <a href="{{route('export.data-siswa')}}" target="_blank" class="btn btn-md btn-default">Export</a>
                   @endif
-                  <a href="{{route('print.siswa')}}" target="_blank" class="btn btn-md btn-default">Print</a>
+                  <div class="dropdown card-title-btn-container">
+                    <button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-print"></em> Print</button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'a1'])}}" target="_blank"><em class="fa fa-print mr-1"></em> A1</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'a2'])}}" target="_blank"><em class="fa fa-print mr-1"></em> A2</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b1'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B1</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b2'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B2</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b3'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B3</a>
+                        <a class="dropdown-item" href="{{route('print.siswa',['ket' => 'b4'])}}" target="_blank"><em class="fa fa-print mr-1"></em> B4</a>
+                      </div>
+                  </div>
                   <select name="select-limit" id="limit-page-show" class="btn btn-common">
                     <option value="{{route('data-siswa', ['siswa' => '','limit' => 'all'])}}" {{ (Request::get('limit') == 'all') ? 'selected' : ''}}>All</option>
                     <option value="{{route('data-siswa', ['siswa' => '','limit' => '1'])}}" {{ (Request::get('limit') == '1') ? 'selected' : ''}}>Tahun 2018/2019</option>
                     <option value="{{route('data-siswa', ['siswa' => '','limit' => '2'])}}" {{ (Request::get('limit') == '2') ? 'selected' : ''}}>Tahun 2019/2020</option>
+                    <option value="{{route('data-siswa', ['siswa' => '','limit' => '3'])}}" {{ (Request::get('limit') == '3') ? 'selected' : ''}}>Tahun 2020/2021</option>
+                    <option value="{{route('data-siswa', ['siswa' => '','limit' => '4'])}}" {{ (Request::get('limit') == '4') ? 'selected' : ''}}>Tahun 2021/2022</option>
+                    <option value="{{route('data-siswa', ['siswa' => '','limit' => '5'])}}" {{ (Request::get('limit') == '5') ? 'selected' : ''}}>Tahun 2022/2023</option>
                   </select>
                 </h3>
                 <div class="table-responsive">
@@ -24,6 +37,7 @@
                           <th>NIS</th>
                           <th>Nama</th>
                           <th>Jenis Kelamin</th>
+                          <th>Agama</th>
                           <th>Tempat Tgl Lahir</th>
                           <th>Nama Orang Tua dan Pekerjaan</th>
                           <th>Alamat</th>
@@ -37,6 +51,7 @@
                           <td>{{$item->nis}}</td>
                           <td>{{ucwords($item->nama)}}</td>
                           <td>{{$item->jenis_kelamin}}</td>
+                          <td>{{$item->agama}}</td>
                           <td>{{$item->tempat.' / '.$item->tanggal_lahir}}</td>
                           <td>{{ucwords($item->getUserById->name).' / '.$item->pekerjaan_orang_tua}}</td>
                           <td>{{$item->alamat}}</td>
@@ -60,6 +75,7 @@
                           <th>Nama</th>
                           <th>kelas</th>
                           <th>Jenis Kelamin</th>
+                          <th>Agama</th>
                           <th>Jenis Siswa</th>
                           <th>Jenis Bayar</th>
                           <th>Action</th>

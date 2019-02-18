@@ -1,6 +1,6 @@
 <header class="page-header row justify-center">
     <div class="col-md-6 col-lg-8" >
-      <h1 class="float-left text-center text-md-left">Dashboard</h1>
+      <h1 class="float-left text-center text-md-left">PAUD TERPADU ASOKA</h1>
     </div>
     <div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <img src="{{asset('images/default-avatar.png')}}" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">

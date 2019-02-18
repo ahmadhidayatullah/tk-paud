@@ -15,16 +15,23 @@
                     <table class="table table-striped table-bordered zero-configuration" id="dataTable">
                       <thead>
                         <tr>
-                          <th>No</th>
-                          <th>Nama</th>
-                          <th>NIP</th>
-                          <th>Jabatan</th>
-                          <th>Tempat/Tgl Lahir</th>
-                          <th>Pangkat</th>
-                          <th>Pendidikan</th>
-                          <th>Alamat</th>
-                          <th>No. Hp</th>
-                          <th>Action</th>
+                          <th rowspan="2">No</th>
+                          <th rowspan="2">Nama</th>
+                          <th rowspan="2">NIP</th>
+                          <th rowspan="2">Jabatan</th>
+                          <th rowspan="2">Tempat/Tgl Lahir</th>
+                          <th colspan="2">Pangkat Terakhir</th>
+                          <th colspan="2">Pendidikan Terakhir</th>
+                          <th rowspan="2">Alamat</th>
+                          <th rowspan="2">No. Hp</th>
+                          <th rowspan="2">TMT KGB</th>
+                          <th rowspan="2">Action</th>
+                        </tr>
+                        <tr>
+                          <th>GOL</th>
+                          <th>TMT</th>
+                          <th>Jenjang</th>
+                          <th>Jurusan</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -35,10 +42,13 @@
                           <td>{{$item->nip}}</td>
                           <td>{{$item->jabatan}}</td>
                           <td>{{$item->tempat.'/'.$item->tanggal_lahir}}</td>
-                          <td>{{$item->pangkat}}</td>
-                          <td>{{$item->pendidikan}}</td>
+                          <td>{{$item->pangkat_gol}}</td>
+                          <td>{{$item->pangkat_tmt}}</td>
+                          <td>{{$item->pendidikan_jenjang}}</td>
+                          <td>{{$item->pendidikan_jurusan}}</td>
                           <td>{{$item->alamat}}</td>
                           <td>{{$item->no_hp}}</td>
+                          <td>{{$item->tmt_kgb}}</td>
                           <td>
                             <a href="{{route('data-guru.edit',$item->id)}}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                               class="editor_view"><i class="fa fa-pencil"></i></a>

@@ -44,6 +44,23 @@
                       </div>
                     </div>
                     <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Agama</label>
+                      <div class="col-md-9">
+                        <select class="form-control" name="agama" id="agama" required>
+                          <option value="">Tidak Ada</option>
+                          <option value="Kristen Katolik">Kristen Katolik</option>
+                          <option value="Kristen Protestan">Kristen Protestan</option>
+                          <option value="Buddha">Buddha</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Islam">Islam</option>
+                          <option value="Konghucu">Konghucu</option>
+                        </select>
+                        @if ($errors->has('agama')) 
+                          <small class="form-text text-muted">{{$errors->first('agama')}}</small>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <label class="col-md-3 col-form-label">Tempat Tanggal Lahir</label>
                       <div class="col-md-4">
                         <input type="text" class="form-control {{ $errors->has('tempat') ? ' is-invalid' : '' }}" value="{{ old('tempat') }}" placeholder="Tempat" name="tempat" required>
@@ -72,8 +89,12 @@
                         <div class="col-md-9">
                           <select class="custom-select form-control" name="kelas" id="kelas">
                             <option value="">Tidak Ada</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
+                            <option value="A1">A1</option>
+                            <option value="A2">A2</option>
+                            <option value="B1">B1</option>
+                            <option value="B2">B2</option>
+                            <option value="B3">B3</option>
+                            <option value="B4">B4</option>
                           </select>
                           @if ($errors->has('kelas')) 
                             <small class="form-text text-muted">{{$errors->first('kelas')}}</small>
@@ -192,7 +213,7 @@
     let kelas = $("#kelas option:selected").val();
     
     if (jenis_siswa == '1' || jenis_siswa == '4') {
-      if (kelas == 'B' && jenis_siswa == '1') {
+      if (kelas == 'B1' || kelas == 'B2' || kelas == 'B3' || kelas == 'B4' && jenis_siswa == '1') {
         $("#rincian").html(tk2);
       }else{
         $("#rincian").html(tk);

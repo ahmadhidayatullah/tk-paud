@@ -102,4 +102,9 @@ Route::group($all_user, function () {
     Route::group(['prefix' => 'export'], function () {
         Route::get('/data-siswa', 'DataSiswaController@export')->name('export.data-siswa');
     });
+
+    Route::group(['prefix' => 'umum'], function () {
+        Route::get('/', 'UmumController@index')->name('umum');
+        Route::put('/{id}', 'UmumController@update')->name('umum.update');
+    });
 });

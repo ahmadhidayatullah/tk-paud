@@ -18,8 +18,9 @@ class CreateDataSiswaTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('nis');
             $table->string('nama');
-            $table->enum('kelas', ['A', 'B'])->nullable();
+            $table->enum('kelas', ['A1', 'A2', 'B1', 'B2', 'B3', 'B4'])->nullable();
             $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->string('agama');
             $table->string('tempat');
             $table->date('tanggal_lahir');
             $table->string('pekerjaan_orang_tua');

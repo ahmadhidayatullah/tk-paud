@@ -26,6 +26,15 @@ class DataSiswaController extends Controller
         } elseif ($limit == '2') {
             $title = "Data Siswa Tahun Ajar 2019/2020";
             $data = DataSiswa::whereYear('created_at', 2019)->orderBy('id', 'DESC')->get();
+        } elseif ($limit == '3') {
+            $title = "Data Siswa Tahun Ajar 2020/2021";
+            $data = DataSiswa::whereYear('created_at', 2020)->orderBy('id', 'DESC')->get();
+        } elseif ($limit == '4') {
+            $title = "Data Siswa Tahun Ajar 2021/2022";
+            $data = DataSiswa::whereYear('created_at', 2021)->orderBy('id', 'DESC')->get();
+        } elseif ($limit == '5') {
+            $title = "Data Siswa Tahun Ajar 2022/2023";
+            $data = DataSiswa::whereYear('created_at', 2022)->orderBy('id', 'DESC')->get();
         } else {
 
             if ($siswa == 'tk') {
@@ -73,6 +82,7 @@ class DataSiswaController extends Controller
             'nis' => 'required',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
+            'agama' => 'required',
             'tempat' => 'required',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
@@ -105,6 +115,7 @@ class DataSiswaController extends Controller
                 'nama' => $request->nama,
                 'kelas' => $request->kelas,
                 'jenis_kelamin' => $request->jenis_kelamin,
+                'agama' => $request->agama,
                 'tempat' => $request->tempat,
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'pekerjaan_orang_tua' => $request->pekerjaan_orang_tua,
@@ -122,7 +133,7 @@ class DataSiswaController extends Controller
                         ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
                     ]);
                 } else {
-                    if ($request->kelas == 'B' && $request->jenis_biaya_siswa_id == 1) {
+                    if ($request->kelas == 'B1' || $request->kelas == 'B2' || $request->kelas == 'B3' || $request->kelas == 'B4' && $request->jenis_biaya_siswa_id == 1) {
                         Pembayaran::insert([
                             ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
                             ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pangkal, 'created_at' => date('Y-m-d H:i:s')],
@@ -147,7 +158,7 @@ class DataSiswaController extends Controller
                         ['jenis_pembayaran' => 'bulanan', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->bulanan, 'created_at' => date('Y-m-d H:i:s')],
                     ]);
                 } else {
-                    if ($request->kelas == 'B' && $request->jenis_biaya_siswa_id == 1) {
+                    if ($request->kelas == 'B1' || $request->kelas == 'B2' || $request->kelas == 'B3' || $request->kelas == 'B4' && $request->jenis_biaya_siswa_id == 1) {
                         Pembayaran::insert([
                             ['jenis_pembayaran' => 'pendaftaran', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $jenis_biaya->pendaftaran, 'created_at' => date('Y-m-d H:i:s')],
                             ['jenis_pembayaran' => 'pangkal', 'data_siswa_id' => $siswa->id, 'tanggal' => date('Y-m-d'), 'bayar' => $request->cicilan, 'created_at' => date('Y-m-d H:i:s')],

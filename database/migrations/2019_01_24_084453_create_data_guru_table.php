@@ -20,12 +20,15 @@ class CreateDataGuruTable extends Migration
             $table->string('nuptk');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('jabatan');
-            $table->string('pangkat');
-            $table->string('pendidikan');
+            $table->string('pangkat_gol')->nullable();
+            $table->string('pangkat_tmt')->nullable();
+            $table->string('pendidikan_jenjang');
+            $table->string('pendidikan_jurusan');
             $table->string('tempat');
             $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->string('no_hp', 20);
+            $table->string('tmt_kgb')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

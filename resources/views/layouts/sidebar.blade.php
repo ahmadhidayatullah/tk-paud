@@ -1,9 +1,9 @@
 <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2">
-    <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> TK Paud</a></h1>
+    <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> PENDIDIKAN ANAK USIA DINI</a></h1>
                       
     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
     <ul class="nav nav-pills flex-column sidebar-nav">
-      <li class="nav-item"><a class="nav-link {{ is_current_route(['home']) }}" href="{!!url('home')!!}"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
+      <li class="nav-item"><a class="nav-link {{ is_current_route(['home']) }}" href="{!!url('home')!!}"><em class="fa fa-dashboard"></em> PAUD TERPADU ASOKA <span class="sr-only">(current)</span></a></li>
       @if (Auth::user()->role_id == 1)
         <li class="parent nav-item">
           <a class="nav-link collapsed" data-toggle="collapse" href="#akun" aria-expanded="false">
@@ -54,6 +54,7 @@
 
         </ul>
       </li>  
+      <li class="nav-item"><a class="nav-link {{ is_current_route(['umum', 'umum/*']) }}" href="{{route('umum')}}"><em class="fa fa-cogs"></em> Umum</a></li>
       @endif
       {{-- <li class="nav-item"><a class="nav-link {{ is_current_route(['log','log/*']) }}" href="{{route('log')}}"><em class="fa fa-file"></em> Log System</a></li> --}}
     </ul>

@@ -97,13 +97,14 @@
 <body onload="window.print()">
     <div class="invoice-box">
         <h4>DATA ANAK DIDIK</h4>
-        <h4>KELOMPOK </h4>
-        <table class="" id="">
+        <h4>KELOMPOK {{ucwords($kelas)}}</h4>
+        <table class="" id="" border="1">
             <thead>
                 <tr class="heading">
                     <th>NIS</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
+                    <th>Agama</th>
                     <th>Tempat Tgl Lahir</th>
                     <th>Nama Orang Tua dan Pekerjaan</th>
                     <th>Alamat</th>
@@ -116,6 +117,7 @@
                     <td>{{$item->nis}}</td>
                     <td>{{ucwords($item->nama)}}</td>
                     <td>{{$item->jenis_kelamin}}</td>
+                    <td>{{$item->agama}}</td>
                     <td>{{$item->tempat.' / '.$item->tanggal_lahir}}</td>
                     <td>{{ucwords($item->getUserById->name).' / '.$item->pekerjaan_orang_tua}}</td>
                     <td>{{$item->alamat}}</td>
@@ -132,11 +134,11 @@
                     Kepala TK Asoka Makassar
                     <br><br><br><br>
                 </td>
-                <td>Guru Kelompok ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br></td>
+                <td>Guru Kelompok {{ucwords($kelas)}}<br><br><br><br></td>
             </tr>
             <tr>
-                <td>(Nurmala Usman, S.Pd)</td>
-                <td><pre>(                   )</pre></td>
+                <td>({{\GeneralHelper::getNameOf()->kepsek}})</td>
+                <td><pre>({{$wali}})</pre></td>
             </tr>
         </table>
     </div>
