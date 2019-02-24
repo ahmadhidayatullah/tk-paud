@@ -28,6 +28,7 @@ class UmumController extends Controller
             'b3' => 'required',
             'b4' => 'required',
             'pengelola' => 'required',
+            'bendahara' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -46,6 +47,7 @@ class UmumController extends Controller
             'b3' => $request->b3,
             'b4' => $request->b4,
             'pengelola' => $request->pengelola,
+            'bendahara' => $request->bendahara,
         ]);
 
         return redirect()->route('umum', $id)->with('message', format_message('Berhasil update data !', 'info'));

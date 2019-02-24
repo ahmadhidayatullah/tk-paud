@@ -15,7 +15,7 @@
                       
                       </div>
                       <div class="col-md-5">
-                        <select class="custom-select form-control" name="data_siswa_id" id="data_siswa_id">
+                        <select class="custom-select form-control" name="data_siswa_id" id="data_siswa_id" required>
                           <option value="">-- Silahkan Cari Siswa -- </option>
                         </select>
                         @if ($errors->has('data_siswa_id')) 
@@ -44,7 +44,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label"></label>
                       <div class="col-md-9 right">
-                        <a href="{{route('user')}}" class="btn btn-md btn-warning">Batal</a>
+                        <button type="reset" class="btn btn-md btn-warning">Batal</button>
                         <button type="submit" class="btn btn-md btn-info">Simpan</button>
                       </div>
                     </div>

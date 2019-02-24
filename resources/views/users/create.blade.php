@@ -60,7 +60,7 @@
                 <div class="form-group row">
                   <label class="col-md-3 col-form-label"></label>
                   <div class="col-md-9 right">
-                    <a href="{{route('user')}}" class="btn btn-md btn-warning">Batal</a>
+                    <button type="reset" class="btn btn-md btn-warning">Batal</button>
                     <button type="submit" class="btn btn-md btn-info">Simpan</button>
                   </div>
                 </div>

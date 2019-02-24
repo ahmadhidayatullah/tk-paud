@@ -79,7 +79,7 @@ class DataSiswaController extends Controller
             'name' => 'required|string|max:255',
             'no_hp' => 'required',
             //murid
-            'nis' => 'required',
+            'nis' => 'required|min:7|max:7',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',

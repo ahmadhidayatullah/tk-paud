@@ -29,6 +29,15 @@
                     @endif
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">Bendahara</label>
+                  <div class="col-md-9">
+                    <input type="text" class="form-control {{ $errors->has('bendahara') ? ' is-invalid' : '' }}" value="{{ $data->bendahara }}" placeholder="Kepala Sekolah" name="bendahara" required>
+                    @if ($errors->has('bendahara')) 
+                      <small class="form-text text-muted">{{$errors->first('bendahara')}}</small>
+                    @endif
+                  </div>
+                </div>
                 @php
                     $lists = ['a1','a2','b1','b2','b3','b4'];
                 @endphp

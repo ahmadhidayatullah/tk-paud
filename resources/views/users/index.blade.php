@@ -15,7 +15,7 @@
                         <tr>
                           <th>Nama</th>
                           <th>Username</th>
-                          <th>Role</th>
+                          <th>Level</th>
                           <th>Tgl Buat</th>
                           <th>Action</th>
                         </tr>
@@ -26,7 +26,7 @@
                           <td>{{$user->name}}</td>
                           <td>{{$user->username}}</td>
                           <td>{{$user->role->name}}</td>
-                          <td>{{$user->created_at}}</td>
+                          <td>{{ date('d M Y',strtotime($user->created_at)) }}</td>
                           <td>
                             <a href="{{route('user.show',$user->id)}}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Lihat"
                               class="editor_view"><i class="fa fa-expand"></i></a>

@@ -31,7 +31,6 @@
                       <label class="col-md-3 col-form-label">Agama</label>
                       <div class="col-md-9">
                         <select class="form-control" name="agama" id="agama" required>
-                          <option value="">Tidak Ada</option>
                           <option value="Kristen Katolik">Kristen Katolik</option>
                           <option value="Kristen Protestan">Kristen Protestan</option>
                           <option value="Buddha">Buddha</option>

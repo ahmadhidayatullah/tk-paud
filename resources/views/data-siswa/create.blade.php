@@ -47,7 +47,6 @@
                       <label class="col-md-3 col-form-label">Agama</label>
                       <div class="col-md-9">
                         <select class="form-control" name="agama" id="agama" required>
-                          <option value="">Tidak Ada</option>
                           <option value="Kristen Katolik">Kristen Katolik</option>
                           <option value="Kristen Protestan">Kristen Protestan</option>
                           <option value="Buddha">Buddha</option>
@@ -85,23 +84,6 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label">Kelas</label>
-                        <div class="col-md-9">
-                          <select class="custom-select form-control" name="kelas" id="kelas">
-                            <option value="">Tidak Ada</option>
-                            <option value="A1">A1</option>
-                            <option value="A2">A2</option>
-                            <option value="B1">B1</option>
-                            <option value="B2">B2</option>
-                            <option value="B3">B3</option>
-                            <option value="B4">B4</option>
-                          </select>
-                          @if ($errors->has('kelas')) 
-                            <small class="form-text text-muted">{{$errors->first('kelas')}}</small>
-                          @endif
-                        </div>
-                      </div>
-                    <div class="form-group row">
                       <label class="col-md-3 col-form-label">Jenis Siswa</label>
                       <div class="col-md-9">
                         <select class="custom-select form-control" name="jenis_biaya_siswa_id" id="jenis_siswa">
@@ -111,6 +93,23 @@
                           @endforeach
                         </select>
                         <div id="rincian"></div>
+                      </div>
+                    </div>
+                    <div class="form-group row" style="display:none;" id="kelas-wrapper">
+                      <label class="col-md-3 col-form-label">Kelas</label>
+                      <div class="col-md-9">
+                        <select class="custom-select form-control" name="kelas" id="kelas">
+                          <option value="">Tidak Ada</option>
+                          <option value="A1">A1</option>
+                          <option value="A2">A2</option>
+                          <option value="B1">B1</option>
+                          <option value="B2">B2</option>
+                          <option value="B3">B3</option>
+                          <option value="B4">B4</option>
+                        </select>
+                        @if ($errors->has('kelas')) 
+                          <small class="form-text text-muted">{{$errors->first('kelas')}}</small>
+                        @endif
                       </div>
                     </div>
                     <div class="form-group row">
@@ -188,7 +187,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label"></label>
                       <div class="col-md-9 right">
-                        <a href="{{route('user')}}" class="btn btn-md btn-warning">Batal</a>
+                        <button type="reset" class="btn btn-md btn-warning">Batal</button>
                         <button type="submit" class="btn btn-md btn-info">Simpan</button>
                       </div>
                     </div>
@@ -212,16 +211,42 @@
     let jenis_siswa = $("#jenis_siswa option:selected").val();
     let kelas = $("#kelas option:selected").val();
     
-    if (jenis_siswa == '1' || jenis_siswa == '4') {
+    if (jenis_siswa == '1') {
+      $("#rincian").html('');
+      $("#kelas-wrapper").show();
+      
+    }else if(jenis_siswa == '4'){
+      $("#rincian").html(tk);
+      $("#kelas-wrapper").hide();
+      $("#kelas").val('');
+    }else if(jenis_siswa == '2'){
+      $("#rincian").html(seharian);
+      $("#kelas-wrapper").hide();
+      $("#kelas").val('');
+    }else if(jenis_siswa == '3'){
+      $("#rincian").html(stengah_hari);
+      $("#kelas-wrapper").hide();
+      $("#kelas").val('');
+    }else{
+      $("#rincian").html('');
+      $("#kelas-wrapper").hide();
+      $("#kelas").val('');
+    }
+  });
+
+  $('#kelas').on('change',function(){
+    let tk = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 2.300.000</li><li>seragam 5 pasang 750.000</li><li>uang bulanan 350.000</li></ul></div></div>";
+    let tk2 = "<div class=\"card text-white bg-primary mt-4\"><div class=\"card-header\">Rincian Biaya</div><div class=\"card-block\"><ul><li>uang pendaftaran 100.000</li><li>uang pangkal 2.300.000</li><li>seragam 5 pasang 750.000</li><li>uang bulanan 350.000</li><li>uang peralihan 80.000</li></ul></div></div>";    
+
+    let jenis_siswa = $("#jenis_siswa option:selected").val();
+    let kelas = $("#kelas option:selected").val();
+    
+    if (jenis_siswa == '1') {
       if (kelas == 'B1' || kelas == 'B2' || kelas == 'B3' || kelas == 'B4' && jenis_siswa == '1') {
         $("#rincian").html(tk2);
       }else{
         $("#rincian").html(tk);
       }
-    }else if(jenis_siswa == '2'){
-      $("#rincian").html(seharian);
-    }else if(jenis_siswa == '3'){
-      $("#rincian").html(stengah_hari);
     }else{
       $("#rincian").html('');
     }

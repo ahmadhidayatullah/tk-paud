@@ -22,6 +22,7 @@ class UmumTableSeeder extends Seeder
                 'b3' => 'Wali Kelas B3',
                 'b4' => 'Wali Kelas B4',
                 'Pengelola' => 'Pengelola',
+                'bendahara' => 'Bendahara',
             ],
 
         ];

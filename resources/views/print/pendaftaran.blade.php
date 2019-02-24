@@ -102,41 +102,25 @@
 <body onload="window.print()">
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
-            <tr class="top">
+            <tr class="">
                 <td colspan="2">
                     <table>
                         <tr>
                             <td class="">
-                                <h1 style="width:100%; max-width:300px;">TK PAUD</h1>
+                                <img src="{{asset('images/logo-asoka.jpg')}}" alt="">
                             </td>
                             
-                            <td>
-                                Tanggal: {{ date('d M Y',strtotime(@$data[0]->tanggal)) }}<br>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
+                            <td style="text-align: center">
+                                <h2 style="margin: 0">YAYASAN PENDIDIKAN ASOKA</h2>
+                                <h4 style="margin: 10px">TAMAN KANAK KANAK ASOKA</h4>
                                 JL. Peritis Kemerdekaan KM. 18 No. 237<br>
                                 Telp. (0411) 553300
                             </td>
-                            
-                            <td>
-                                {{ucwords(@$data[0]->getSiswaById->nama)}}.<br>
-                                {{@$data[0]->getSiswaById->no_hp}}<br>
-                                {{@$data[0]->getSiswaById->alamat}}
-                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            
+                        
             <tr class="heading">
                 <td>
                     Item
@@ -185,13 +169,13 @@
         <table>
             <tr>
                 <td>
-                    Mengetahui<br>
-                    Kepala TK Asoka Makassar
+                    Makassar, {{ date('d M Y',strtotime(@$data[0]->tanggal)) }}<br>
+                    Bendahara TK Asoka
                     <br><br><br>
                 </td>
             </tr>
             <tr>
-                <td>({{\GeneralHelper::getNameOf()->kepsek}})</td>
+                <td>({{\GeneralHelper::getNameOf()->bendahara}})</td>
             </tr>
         </table>
     </div>
