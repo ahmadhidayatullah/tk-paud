@@ -215,4 +215,60 @@ class DataSiswaController extends Controller
     {
         return Excel::download(new DataSiswaExport, 'data_siswa.xlsx');
     }
+
+    function print($id) {
+        $data = DataSiswa::findOrFail($id);
+        return view('data-siswa.print', [
+            'data' => $data,
+        ]);
+    }
+
+    public function nilai(Request $request, $data_id)
+    {
+        $data = DataSiswa::findOrFail($data_id);
+        return view('data-siswa.nilai', [
+            'data' => $data,
+        ]);
+    }
+
+    public function nilaiStore(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'pendahuluan' => 'required',
+            'agama' => 'required',
+            'fisik_motorik' => 'required',
+            'sosial_emosional' => 'required',
+            'bahasa' => 'required',
+            'kognitif' => 'required',
+            'seni' => 'required',
+            'penutup' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('message', format_message('Silahkan periksa inputan !', 'danger'));
+        }
+
+        $nilai = \App\Models\DataSiswaNilai::updateOrCreate([
+            'data_siswa_id' => $id,
+        ], [
+            'pendahuluan' => $request->pendahuluan,
+            'agama' => $request->agama,
+            'fisik_motorik' => $request->fisik_motorik,
+            'sosial_emosional' => $request->sosial_emosional,
+            'bahasa' => $request->bahasa,
+            'kognitif' => $request->kognitif,
+            'seni' => $request->seni,
+            'penutup' => $request->penutup,
+        ]);
+
+        if ($nilai) {
+            return redirect()->route('data-siswa')->with('message', format_message('Berhasil Input Nilai', 'success'));
+        } else {
+            return redirect()->route('data-siswa')->with('message', format_message('Gagal Input Nilai', 'danger'));
+        }
+
+    }
 }

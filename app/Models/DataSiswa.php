@@ -43,4 +43,9 @@ class DataSiswa extends Model
         return $this->hasMany('App\Models\Pembayaran', 'data_siswa_id', 'id');
     }
 
+    public function getNilaiSiswa()
+    {
+        return $this->hasOne('App\Models\DataSiswaNilai', 'data_siswa_id', 'id');
+    }
+
 }

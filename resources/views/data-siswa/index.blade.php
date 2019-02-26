@@ -69,6 +69,12 @@
                             <a data-href="{{route('data-siswa.delete',$item->id)}}" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"
                               title="Hapus" class="editor_remove"><i class="fa fa-trash"></i></a>
                               @endif
+
+                            <a href="{{route('data-siswa.print',$item->id)}}" target="_blank" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Print"
+                              class="editor_view"><i class="fa fa-print"></i></a>
+
+                            <a href="{{route('data-siswa.nilai',$item->id)}}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Inpit Nilai"
+                                class="editor_view"><i class="fa fa-pencil"></i></a>
                           </td>
                         </tr>
                         @endforeach

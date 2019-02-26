@@ -61,6 +61,9 @@ Route::group($all_user, function () {
         Route::get('/{siswa?}', 'DataSiswaController@index')->name('data-siswa');
         Route::get('/create/siswa', 'DataSiswaController@create')->name('data-siswa.create');
         Route::get('/lihat/{id}', 'DataSiswaController@show')->name('data-siswa.show');
+        Route::get('/nilai/{data_id}', 'DataSiswaController@nilai')->name('data-siswa.nilai');
+        Route::put('/nilai/{id}', 'DataSiswaController@nilaiStore')->name('data-siswa.nilai.store');
+        Route::get('/siswa/{id}/print', 'DataSiswaController@print')->name('data-siswa.print');
         Route::post('/', 'DataSiswaController@store')->name('data-siswa.create.submit');
         // Route::get('/edit/{id}', 'DataSiswaController@edit')->name('data-siswa.edit');
         // Route::put('/{id}', 'DataSiswaController@update')->name('data-siswa.update');
