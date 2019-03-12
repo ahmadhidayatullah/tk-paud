@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataSiswa;
 use App\Models\KontrolTamanPenitipanAnak as Penitipan;
 use App\Models\Pembayaran;
+use App\Rules\MaxPayDate;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -20,7 +21,7 @@ class PembayaranController extends Controller
         $validator = Validator::make($request->all(), [
             'jenis_pembayaran' => 'required',
             'data_siswa_id' => 'required',
-            'tanggal' => 'required',
+            'tanggal' => new MaxPayDate(),
             'bayar' => 'required',
             'total_denda' => 'required',
         ]);
@@ -52,7 +53,7 @@ class PembayaranController extends Controller
     public function getSiswa(Request $request)
     {
         $text = isset($request->text) ? $request->text : '';
-        $data = DataSiswa::where('nama', 'LIKE', '%' . trim($text) . '%')->get();
+        $data = DataSiswa::where('nama', 'LIKE', trim($text) . '%')->get();
         if ($data->count() < 1) {
             return '<option> -- Data Tidak Ada -- </option>';
         } else {

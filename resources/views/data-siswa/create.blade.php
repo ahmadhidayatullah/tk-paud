@@ -10,7 +10,7 @@
                   <div class="form-group row">
                       <label class="col-md-3 col-form-label">NIS</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('nis') ? ' is-invalid' : '' }}" value="{{ old('nis') }}" placeholder="Nomor Induk Siswa" name="nis" required>
+                        <input type="number" class="form-control {{ $errors->has('nis') ? ' is-invalid' : '' }}" value="{{ old('nis') }}" max="9" onKeyDown="if(this.value.length==9) return false;" placeholder="Nomor Induk Siswa" name="nis" required>
                         @if ($errors->has('nis')) 
                           <small class="form-text text-muted">{{$errors->first('nis')}}</small>
                         @endif

@@ -35,7 +35,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Tanggal</label>
                       <div class="col-md-9">
-                        <input type="date" id="tanggal" class="form-control {{ $errors->has('tanggal') ? ' is-invalid' : '' }}" value="{{ old('tanggal') }}" placeholder="tanggal" name="tanggal" required>
+                        <input type="date" id="tanggal" class="form-control {{ $errors->has('tanggal') ? ' is-invalid' : '' }}" value="{{date('Y-m-d')}}" placeholder="tanggal" name="tanggal" required>
                         @if ($errors->has('tanggal')) 
                           <small class="form-text text-muted">{{$errors->first('tanggal')}}</small>
                         @endif
@@ -107,8 +107,8 @@
         });
       });
 
-      $('#tanggal').on('change',function(){
-        let tanggal = $(this).val();
+      $('#data_siswa_id').on('change',function(){
+        let tanggal = $("#tanggal").val();
         let siswa = $("#data_siswa_id option:selected").val();
         let jenis_bayar = $("#jenis_pembayaran option:selected").val();
         let url = $('meta[name="app-url"]').attr('content')

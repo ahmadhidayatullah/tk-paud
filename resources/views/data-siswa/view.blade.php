@@ -90,6 +90,42 @@
             </div>    
     </div>
     <div class="col-md-12 col-lg-4">
+      @if ($data->jenis_biaya_siswa_id == 4)
+        @php
+            $tk_cek = 5;
+            $year_now = date('Y');
+            $get_date = explode('-',$data->tanggal_lahir);
+
+            $different = $year_now - $get_date[0];
+
+            if ($different >= $tk_cek) {
+              $text = "Sudah Bisa Masuk TK";
+            } else {
+              $text = "<b>".$different. " Tahun</b> Lagi Masuk TK";
+            }
+            
+        @endphp    
+        <div class="card mb-4">
+          <div class="card-block">
+            <div class="divider"></div>
+            <h3 class="card-title">Peralihan Kelas</h3>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <ul class="timeline">
+            <li>
+                <div class="timeline-badge"><em class="fa fa-info"></em></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h5 class="timeline-title mt-2"></h5>
+                  </div>
+                  <div class="timeline-body">
+                    <p>{!!$text!!}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      @endif
       <div class="card mb-4">
         <div class="card-block">
           <div class="divider"></div>

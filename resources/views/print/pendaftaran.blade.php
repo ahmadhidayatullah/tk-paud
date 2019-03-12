@@ -120,10 +120,12 @@
                     </table>
                 </td>
             </tr>
-                        
+            <tr>
+                <td>Nama : {{@$data[0]->getSiswaById->nama}}</td>
+            </tr>
             <tr class="heading">
                 <td>
-                    Item
+                    Pembayaran
                 </td>
                 
                 <td>
@@ -134,20 +136,45 @@
                 $bayar=0;
             @endphp
             @foreach ($data as $item)    
-                <tr class="item">
-                    <td>
-                        {{ucwords($item->jenis_pembayaran)}} {{$kwitansi ? ' + Denda' : ''}}
-                    </td>
-                    {{-- @if ($kwitansi)    
+                @if ($item->jenis_pembayaran == 'bulanan')
+                    @if ($item->total_denda > 0 && $kwitansi == true)
+                    <tr class="item">
                         <td>
                             {{ucwords($item->jenis_pembayaran)}}
                         </td>
-                    @endif --}}
+                        <td>
+                            {{\GeneralHelper::toRupiah($item->bayar)}}
+                        </td>
+                    </tr>
+                    <tr class="item">
+                        <td>
+                            Denda
+                        </td>
+                        <td>
+                            {{\GeneralHelper::toRupiah($item->total_denda)}}
+                        </td>
+                    </tr>
 
-                    <td>
-                        {{\GeneralHelper::toRupiah($item->bayar)}} {{$kwitansi ? ' + '.\GeneralHelper::toRupiah($item->total_denda) : ''}}
-                    </td>
-                </tr>
+                    @else
+                    <tr class="item">
+                        <td>
+                            {{ucwords($item->jenis_pembayaran)}}
+                        </td>
+                        <td>
+                            {{\GeneralHelper::toRupiah($item->bayar)}}
+                        </td>
+                    </tr>
+                    @endif
+                @else
+                    <tr class="item">
+                        <td>
+                            {{ucwords($item->jenis_pembayaran)}}
+                        </td>
+                        <td>
+                            {{\GeneralHelper::toRupiah($item->bayar)}}
+                        </td>
+                    </tr>
+                @endif
                 @php
                 if ($kwitansi) {
                     $bayar = $bayar + $item->bayar + $item->total_denda;
