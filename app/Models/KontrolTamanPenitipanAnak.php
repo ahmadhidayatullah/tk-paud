@@ -20,7 +20,7 @@ class KontrolTamanPenitipanAnak extends Model
 
     protected $fillable = [
 
-        'data_siswa_id', 'waktu', 'keterlambatan_jemput',
+        'data_siswa_id', 'waktu', 'keterlambatan_jemput', 'denda',
 
     ];
 

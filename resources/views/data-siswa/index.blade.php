@@ -7,6 +7,7 @@
                 <h3 class="card-title">{{$title}}
                     @if (Auth::user()->role_id == 1)    
                   <a href="{{route('data-siswa.create')}}" class="btn btn-md btn-default">Tambah Siswa</a>
+                  <a href="{{route('peralihan-siswa')}}" class="btn btn-md btn-default">Peralihan</a>
                   <a href="{{route('export.data-siswa')}}" target="_blank" class="btn btn-md btn-default">Export</a>
                   @endif
                   <div class="dropdown card-title-btn-container">

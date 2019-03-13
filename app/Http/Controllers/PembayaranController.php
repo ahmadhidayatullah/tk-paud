@@ -109,7 +109,7 @@ class PembayaranController extends Controller
 
         $count = 0;
         foreach ($penitipan as $item) {
-            $count = $count + $getDataSiswa->getJenisBiayaById->denda_permenit * ceil(($item->keterlambatan_jemput / 15));
+            $count = $count + $item->denda;
         }
 
         $respone = [

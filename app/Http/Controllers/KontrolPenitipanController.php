@@ -37,10 +37,13 @@ class KontrolPenitipanController extends Controller
                 ->with('message', format_message('Silahkan periksa inputan !', 'danger'));
         }
 
+        $denda = $this->__countDenda($request->data_siswa_id, $request->keterlambatan_jemput);
+
         $data = Penitipan::create([
             'data_siswa_id' => $request->data_siswa_id,
             'waktu' => date('Y-m-d H:i:s'),
             'keterlambatan_jemput' => $request->keterlambatan_jemput,
+            'denda' => $denda,
         ]);
 
         if ($data) {
@@ -50,10 +53,22 @@ class KontrolPenitipanController extends Controller
         return redirect()->route('kontrol-penitipan')->with('message', format_message('Transaksi berhasil !', 'success'));
     }
 
+    private function __countDenda($siswa_id, $terlambat = 0)
+    {
+        $data = DataSiswa::findOrFail($siswa_id);
+
+        $count = 0;
+        if ($terlambat > 15) {
+            $count = $data->getJenisBiayaById->denda_permenit * ceil(($terlambat / 15));
+        }
+
+        return $count;
+    }
+
     public function getSiswa(Request $request)
     {
         $text = isset($request->text) ? $request->text : '';
-        $data = DataSiswa::where('nama', 'LIKE', '%' . trim($text) . '%')
+        $data = DataSiswa::where('nama', 'LIKE', trim($text) . '%')
             ->where('jenis_biaya_siswa_id', 2)
             ->orWhere('jenis_biaya_siswa_id', 3)->get();
         if ($data->count() < 1) {

@@ -57,6 +57,15 @@ Route::group($all_user, function () {
         Route::delete('/{id}', 'DataGuruController@destroy')->name('data-guru.delete');
     });
 
+    Route::group(['prefix' => 'data-pegawai'], function () {
+        Route::get('/', 'PegawaiController@index')->name('data-pegawai');
+        Route::get('/create', 'PegawaiController@create')->name('data-pegawai.create');
+        Route::post('/', 'PegawaiController@store')->name('data-pegawai.create.submit');
+        Route::get('/edit/{id}', 'PegawaiController@edit')->name('data-pegawai.edit');
+        Route::put('/{id}', 'PegawaiController@update')->name('data-pegawai.update');
+        Route::delete('/{id}', 'PegawaiController@destroy')->name('data-pegawai.delete');
+    });
+
     Route::group(['prefix' => 'data-siswa'], function () {
         Route::get('/{siswa?}', 'DataSiswaController@index')->name('data-siswa');
         Route::get('/create/siswa', 'DataSiswaController@create')->name('data-siswa.create');
@@ -110,4 +119,11 @@ Route::group($all_user, function () {
         Route::get('/', 'UmumController@index')->name('umum');
         Route::put('/{id}', 'UmumController@update')->name('umum.update');
     });
+
+    Route::group(['prefix' => 'peralihan-siswa'], function () {
+        Route::get('/', 'PeralihanSiswaController@index')->name('peralihan-siswa');
+        Route::post('/', 'PeralihanSiswaController@store')->name('peralihan-siswa.create.submit');
+        Route::get('/show', 'PeralihanSiswaController@show')->name('peralihan-siswa.show');
+    });
+
 });

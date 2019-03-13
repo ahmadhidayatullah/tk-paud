@@ -18,6 +18,7 @@ class CreateKontrolTamanPenitipanAnakTable extends Migration
             $table->unsignedInteger('data_siswa_id');
             $table->datetime('waktu');
             $table->integer('keterlambatan_jemput')->default(0);
+            $table->integer('denda')->default(0);
             $table->timestamps();
 
             $table->foreign('data_siswa_id')->references('id')->on('data_siswa')->onDelete('cascade');;

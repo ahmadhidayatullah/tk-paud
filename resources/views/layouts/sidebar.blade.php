@@ -36,6 +36,7 @@
         </li>  
       @endif
       @if (Auth::user()->role_id == 1)
+      <li class="nav-item"><a class="nav-link {{ is_current_route(['data-pegawai', 'data-pegawai/*']) }}" href="{{route('data-pegawai')}}"><em class="fa fa-address-card-o"></em> Data Pegawai</a></li>
       <li class="nav-item"><a class="nav-link {{ is_current_route(['kontrol-penitipan', 'kontrol-penitipan/*']) }}" href="{{route('kontrol-penitipan')}}"><em class="fa fa-exchange"></em> Kontrol Penitipan</a></li>
       @endif
       @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3)

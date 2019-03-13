@@ -23,19 +23,19 @@
                         @endif
                       </div>
                     </div>
-                    {{-- <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Waktu</label>
+                    <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Waktu Jemput</label>
                       <div class="col-md-9">
-                        <input type="date" class="form-control {{ $errors->has('waktu') ? ' is-invalid' : '' }}" value="{{ old('waktu') }}" placeholder="waktu" name="waktu" required>
+                        <input type="text" id="time" class="form-control {{ $errors->has('waktu') ? ' is-invalid' : '' }}" value="{{ old('waktu') }}" placeholder="waktu" name="waktu" required>
                         @if ($errors->has('waktu')) 
                           <small class="form-text text-muted">{{$errors->first('waktu')}}</small>
                         @endif
                       </div>
-                    </div> --}}
+                    </div>
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Keterlambatan (Menit)</label>
                       <div class="col-md-9">
-                        <input type="number" class="form-control {{ $errors->has('keterlambatan_jemput') ? ' is-invalid' : '' }}" value="{{ (old('keterlambatan_jemput') !== null) ? old('keterlambatan_jemput') : 0 }}" placeholder="keterlambatan_jemput" name="keterlambatan_jemput" required>
+                        <input type="number" id="keterlambatan" class="form-control {{ $errors->has('keterlambatan_jemput') ? ' is-invalid' : '' }}" value="{{ (old('keterlambatan_jemput') !== null) ? old('keterlambatan_jemput') : 0 }}" placeholder="keterlambatan_jemput" name="keterlambatan_jemput" required>
                         @if ($errors->has('keterlambatan_jemput')) 
                           <small class="form-text text-muted">{{$errors->first('keterlambatan_jemput')}}</small>
                         @endif
@@ -55,9 +55,11 @@
     </div>
 </form>
 {{-- </section> --}}
+<link href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet"/>
 @endsection
 @section('assetjs')
 <script src="{{asset('js/axios.min.js')}}"></script>
+<script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
 
     <script type="text/javascript">
       $('#cari').on('keyup',function(){
@@ -77,5 +79,22 @@
            console.log(error);
         });
       });
+
+      $('#time').on('change',function(){
+        let time = $('#time').val();
+        var startTime = new Date('2019/04/09 17:00'); 
+        var endTime = new Date('2019/04/09 '+time);
+        var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+        var resultInMinutes = Math.round(difference / 60000);
+        $('#keterlambatan').val(resultInMinutes);
+          
+      });
     </script>
+
+    <script type="text/javascript">
+      $('#time').clockpicker({
+        donetext: 'Done'
+      });
+    </script>
+
 @endsection

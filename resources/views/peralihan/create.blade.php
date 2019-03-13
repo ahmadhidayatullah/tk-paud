@@ -1,12 +1,34 @@
 @extends('layouts.master') 
 @section('content')
 {{-- <section class="row"> --}}
-<form action="{{route('data-siswa.create.submit')}}" method="post">
+<form action="{{route('peralihan-siswa.create.submit')}}" method="post">
     <div class="row">
         <div class="col-md-6 col-lg-6">
             <div class="card mb-4">
                 <div class="card-block">
-                  <h3 class="card-title">Data Siswa</h3>
+                  <h3 class="card-title">Cari Siswa</h3>
+
+                   <div class="form-group row">
+                    <div class="col-md-6">
+                      <input type="text" id="cari" class="form-control" value="" placeholder="Cari Siswa" name="tempat" required>
+                    
+                    </div>
+                    <div class="col-md-6">
+                      <select class="custom-select form-control" name="data_siswa_id" id="data_siswa_id" required>
+                        <option value="">-- Silahkan Cari Siswa -- </option>
+                      </select>
+                      @if ($errors->has('data_siswa_id')) 
+                        <small class="form-text text-muted">{{$errors->first('data_siswa_id')}}</small>
+                      @endif
+                    </div>
+                  </div>
+                    
+                  
+                </div>
+              </div>
+            <div class="card mb-4">
+                <div class="card-block">
+                  <h3 class="card-title">Peralihan Siswa</h3>
                   <div class="form-group row">
                       <label class="col-md-3 col-form-label">NIS</label>
                       <div class="col-md-9">
@@ -19,7 +41,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Nama</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}" value="{{ old('nama') }}" placeholder="Nama" name="nama" required>
+                        <input type="text" id="nama" class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}" value="{{ old('nama') }}" placeholder="Nama" name="nama" required>
                         @if ($errors->has('nama')) 
                           <small class="form-text text-muted">{{$errors->first('nama')}}</small>
                         @endif
@@ -62,7 +84,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Tempat Tanggal Lahir</label>
                       <div class="col-md-4">
-                        <input type="text" class="form-control {{ $errors->has('tempat') ? ' is-invalid' : '' }}" value="{{ old('tempat') }}" placeholder="Tempat" name="tempat" required>
+                        <input type="text" id="tempat" class="form-control {{ $errors->has('tempat') ? ' is-invalid' : '' }}" value="{{ old('tempat') }}" placeholder="Tempat" name="tempat" required>
                         @if ($errors->has('tempat')) 
                           <small class="form-text text-muted">{{$errors->first('tempat')}}</small>
                         @endif
@@ -77,7 +99,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Alamat</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('alamat') ? ' is-invalid' : '' }}" placeholder="Alamat" name="alamat" value="{{old('alamat')}}" required>
+                        <input type="text" id="alamat" class="form-control {{ $errors->has('alamat') ? ' is-invalid' : '' }}" placeholder="Alamat" name="alamat" value="{{old('alamat')}}" required>
                         @if ($errors->has('alamat')) 
                           <small class="form-text text-muted">{{$errors->first('alamat')}}</small>
                         @endif
@@ -128,21 +150,14 @@
           <div class="col-md-6 col-lg-6">
             <div class="card mb-4">
                 <div class="card-block">
-                  <h3 class="card-title">Akun Orang Tua/Wali</h3>
-                  
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Nama</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="Nama" name="name" required>
-                        @if ($errors->has('name')) 
-                          <small class="form-text text-muted">{{$errors->first('name')}}</small>
-                        @endif
-                      </div>
-                    </div>
+                  <h3 class="card-title"> Orang Tua/Wali</h3>
+
+                  <input type="hidden" id="id" value="{{ old('id') }}"  name="id" required>
+
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">No. Hp</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('no_hp') ? ' is-invalid' : '' }}" placeholder="Nomor Handphone" name="no_hp" value="{{old('no_hp')}}" required>
+                        <input type="text" id="no_hp" class="form-control {{ $errors->has('no_hp') ? ' is-invalid' : '' }}" placeholder="Nomor Handphone" name="no_hp" value="{{old('no_hp')}}" required>
                         @if ($errors->has('no_hp')) 
                           <small class="form-text text-muted">{{$errors->first('no_hp')}}</small>
                         @endif
@@ -151,36 +166,9 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">Pekerjaan</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('pekerjaan_orang_tua') ? ' is-invalid' : '' }}" value="{{ old('pekerjaan_orang_tua') }}" placeholder="Nama Pekerjaan" name="pekerjaan_orang_tua" required>
+                        <input type="text" id="pekerjaan_orang_tua" class="form-control {{ $errors->has('pekerjaan_orang_tua') ? ' is-invalid' : '' }}" value="{{ old('pekerjaan_orang_tua') }}" placeholder="Nama Pekerjaan" name="pekerjaan_orang_tua" required>
                         @if ($errors->has('pekerjaan_orang_tua')) 
                           <small class="form-text text-muted">{{$errors->first('pekerjaan_orang_tua')}}</small>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Username</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" value="{{ old('username') }}" placeholder="Username" name="username" required>
-                        @if ($errors->has('username')) 
-                          <small class="form-text text-muted">{{$errors->first('username')}}</small>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Password</label>
-                      <div class="col-md-9">
-                        <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" required>
-                        @if ($errors->has('password')) 
-                          <small class="form-text text-muted">{{$errors->first('password')}}</small>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label">Konirmasi Password</label>
-                      <div class="col-md-9">
-                        <input type="password" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" placeholder="Konfirmasi Password" name="password_confirmation" required>
-                        @if ($errors->has('password_confirmation')) 
-                          <small class="form-text text-muted">{{$errors->first('password_confirmation')}}</small>
                         @endif
                       </div>
                     </div>
@@ -200,6 +188,7 @@
 {{-- </section> --}}
 @endsection
 @section('assetjs')
+<script src="{{asset('js/axios.min.js')}}"></script>
 <script type="text/javascript">  
   
   $('#jenis_siswa').on('change',function(){
@@ -259,6 +248,51 @@
     }else{
       $("#cicilan").show();
     }
+  });
+</script>
+
+<script type="text/javascript">
+  $('#cari').on('keyup',function(){
+    let text = $(this).val();
+
+    let url = $('meta[name="app-url"]').attr('content')
+
+    axios.get(`${url}/peralihan-siswa/show/?text=${text}`).then(function (response) {
+      let text = response.data
+      if (text == '') {
+        $('#data_siswa_id').html(text)
+      }else{
+        $('#data_siswa_id').html(text)
+      }
+      // $('data_siswa_id').html()
+    }).catch((error) => {
+       console.log(error);
+    });
+  });
+
+  $('#data_siswa_id').on('change',function(){
+    let siswa = $("#data_siswa_id option:selected").val();  
+    let url = $('meta[name="app-url"]').attr('content')
+
+    axios.get(`${url}/peralihan-siswa/show/?id=${siswa}`).then(function (response) {
+      let text = response.data
+      if (text == '') {
+        console.log('error');
+        
+      }else{
+        console.log(text);
+        $("#nama").val(text.nama);
+        $("#tempat").val(text.tempat);
+        $("#alamat").val(text.alamat);
+        $("#id").val(text.user_id);
+        $("#no_hp").val(text.no_hp);
+        $("#pekerjaan_orang_tua").val(text.pekerjaan_orang_tua);
+
+      }
+      // $('data_siswa_id').html()
+    }).catch((error) => {
+       console.log(error);
+    });
   });
 </script>
     
