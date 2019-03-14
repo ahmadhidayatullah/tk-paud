@@ -38,7 +38,7 @@ class PeralihanSiswaController extends Controller
         } else {
             $id = isset($request->id) ? $request->id : '';
             $data = DataSiswa::findOrFail($id);
-
+            $data['ortu'] = $data->getUserById->name;
             return $data;
         }
     }

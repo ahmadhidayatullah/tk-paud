@@ -22,6 +22,7 @@
                       <th>Nama</th>
                       <th>Jenis Bayar</th>
                       <th>Tanggal</th>
+                      <th>Keterangan Bayar</th>
                       <th>Bayar</th>
                       <th>Denda</th>
                       <th>Action</th>
@@ -33,6 +34,15 @@
                         <td>{{ucwords($item->getSiswaById->nama)}}</td>
                         <td>{{ucwords($item->jenis_pembayaran)}}</td>
                         <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
+                        @if ($item->jenis_pembayaran == 'pangkal')
+                          @if ($item->getSiswaById->jenis_bayar == 'cash')  
+                            <td>Lunas</td>
+                          @else
+                            <td>{{ucwords($item->getSiswaById->jenis_bayar)}}</td>
+                          @endif
+                        @else
+                          <td></td>
+                        @endif
                         <td>{{\GeneralHelper::toRupiah($item->bayar)}}</td>
                         <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
                         <td>

@@ -154,6 +154,15 @@
 
                   <input type="hidden" id="id" value="{{ old('id') }}"  name="id" required>
 
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Orang Tua/ Wali</label>
+                    <div class="col-md-9">
+                      <input type="text" id="ortu" class="form-control {{ $errors->has('ortu') ? ' is-invalid' : '' }}" placeholder="Nama Orangtua / Wali" name="ortu" value="{{old('ortu')}}" required>
+                      @if ($errors->has('ortu')) 
+                        <small class="form-text text-muted">{{$errors->first('ortu')}}</small>
+                      @endif
+                    </div>
+                  </div>
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label">No. Hp</label>
                       <div class="col-md-9">
@@ -286,6 +295,7 @@
         $("#alamat").val(text.alamat);
         $("#id").val(text.user_id);
         $("#no_hp").val(text.no_hp);
+        $("#ortu").val(text.ortu);
         $("#pekerjaan_orang_tua").val(text.pekerjaan_orang_tua);
 
       }
