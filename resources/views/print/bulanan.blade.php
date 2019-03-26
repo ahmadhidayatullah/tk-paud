@@ -103,6 +103,7 @@
                     <th>Nama</th>
                     <th>Jenis Bayar</th>
                     <th>Tanggal</th>
+                    <th>Keterangan</th>
                     <th>Bayar</th>
                     <th>Denda</th>
                     <th>Sub Total</th>
@@ -113,22 +114,78 @@
                     $total = 0;
                 @endphp
                 @foreach ($data as $item)
-                <tr class="item">
-                    <td>{{ucwords($item->getSiswaById->nama)}}</td>
-                    <td>{{ucwords($item->jenis_pembayaran)}}</td>
-                    <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
-                    <td>{{\GeneralHelper::toRupiah($item->bayar)}}</td>
-                    <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
-                    <td>{{\GeneralHelper::toRupiah($item->bayar+$item->total_denda)}}</td>
-                    @php
-                        $total = $total + $item->bayar + $item->total_denda;
-                    @endphp
-                </tr>
+                    @if ($item->jenis_pembayaran == 'pangkal' && $item->getSiswaById->jenis_bayar != 'cash')
+                         <tr class="item">
+                            <td>{{ucwords($item->getSiswaById->nama)}}</td>
+                            <td>{{ucwords($item->jenis_pembayaran)}}</td>
+                            <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
+                            <td>
+                                {{ucwords($item->getSiswaById->jenis_bayar)}}
+                            </td>
+                            <td>
+                                {{\GeneralHelper::toRupiah($item->bayar)}}
+                            </td>
+                            <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
+                            <td>{{\GeneralHelper::toRupiah($item->bayar+$item->total_denda)}}</td>
+                            @php
+                                $total = $total + $item->bayar + $item->total_denda;
+                            @endphp
+                        </tr>
+                        <tr class="item">
+                            <td>{{ucwords($item->getSiswaById->nama)}}</td>
+                            <td>{{ucwords($item->jenis_pembayaran)}}</td>
+                            <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
+                            <td>
+                                Siswa Bayar
+                            </td>
+                            <td>
+                                {{\GeneralHelper::toRupiah($item->getSiswaById->getJenisBiayaById->pangkal - $item->bayar)}}
+                            </td>
+                            <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
+                            <td>
+                                {{\GeneralHelper::toRupiah($item->getSiswaById->getJenisBiayaById->pangkal - $item->bayar)}}
+                            </td>
+                            {{-- @php
+                                $total = $total + $item->bayar + $item->total_denda;
+                            @endphp --}}
+                        </tr>
+                    @else
+
+                        <tr class="item">
+                            <td>{{ucwords($item->getSiswaById->nama)}}</td>
+                            <td>{{ucwords($item->jenis_pembayaran)}}</td>
+                            <td>{{ date('d M Y',strtotime($item->tanggal)) }}</td>
+                            @if ($item->jenis_pembayaran == 'pangkal')
+                                @if ($item->getSiswaById->jenis_bayar == 'cash')  
+                                <td>Lunas</td>
+                                @else
+                                <td>
+                                    {{ucwords($item->getSiswaById->jenis_bayar)}}
+                                </td>
+                                @endif
+                            @else
+                                <td></td>
+                            @endif
+                            <td>
+                            @if ($item->jenis_pembayaran == 'pangkal' && $item->getSiswaById->jenis_bayar != 'cash')
+                            {{\GeneralHelper::toRupiah($item->bayar)}} (Sisa {{\GeneralHelper::toRupiah($item->getSiswaById->getJenisBiayaById->pangkal - $item->bayar)}})
+                            @else
+                                {{\GeneralHelper::toRupiah($item->bayar)}}
+                            @endif
+                            </td>
+                            <td>{{\GeneralHelper::toRupiah($item->total_denda)}}</td>
+                            <td>{{\GeneralHelper::toRupiah($item->bayar+$item->total_denda)}}</td>
+                            @php
+                                $total = $total + $item->bayar + $item->total_denda;
+                            @endphp
+                        </tr>
+
+                    @endif
                 @endforeach
             </tbody>
             <tfoot>
                 <tr class="heading">
-                    <th colspan="5">Total</th>
+                    <th colspan="6">Total</th>
                     <th>{{\GeneralHelper::toRupiah($total)}}</th>
                 </tr>
             </tfoot>
