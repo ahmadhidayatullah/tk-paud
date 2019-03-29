@@ -78,7 +78,7 @@ class PembayaranController extends Controller
             $respone = [
                 'bayar' => $getDataSiswa->getJenisBiayaById->pangkal,
                 'denda' => 0,
-                'total' => $getDataSiswa->getJenisBiayaById->bulanan,
+                'total' => $getDataSiswa->getJenisBiayaById->pangkal,
             ];
         } else {
             if ($getDataSiswa->jenis_biaya_siswa_id == '1' || $getDataSiswa->jenis_biaya_siswa_id == '4') {

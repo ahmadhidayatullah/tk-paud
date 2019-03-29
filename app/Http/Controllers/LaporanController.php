@@ -86,8 +86,14 @@ class LaporanController extends Controller
         if (isset($request->start)) {
             $from = $request->start;
             $to = $request->end;
-
-            $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+            $filter = $request->filter;
+            if ($filter == 'semua') {
+                $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+            } else {
+                $data = Pembayaran::whereHas('getSiswaById', function ($query) use ($filter) {
+                    $query->where('jenis_bayar', '=', $filter);
+                })->whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+            }
         } else {
             $data = '';
         }
@@ -95,6 +101,7 @@ class LaporanController extends Controller
             'data' => $data,
             'get_start' => (isset($from)) ? $from : '',
             'get_end' => (isset($to)) ? $to : '',
+            'filter' => (isset($filter)) ? $filter : '',
         ]);
     }
 }

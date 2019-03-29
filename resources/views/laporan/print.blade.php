@@ -7,13 +7,20 @@
               <h3 class="card-title">Print</h3>
               <form action="{{route('laporan.print')}}">
               <div class="row">
-                      <div class="col-lg-4 col-sm-4">
+                      <div class="col-lg-3 col-sm-4">
                           <input type="date" class="form-control" name="start">
                       </div>
-                      <div class="col-lg-4 col-sm-4">
+                      <div class="col-lg-3 col-sm-4">
                         <input type="date" class="form-control" name="end">
                       </div>
-                      <div class="col-lg-4 col-sm-4">
+                      <div class="col-lg-3 col-sm-4">
+                        <select name="filter" class="form-control">
+                            <option value="semua">Semua</option>
+                            <option value="cash">Lunas</option>
+                            <option value="cicil">Cicil</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-3 col-sm-4">
                           <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Cari</button>
                       </div>
                     </div>
@@ -25,7 +32,7 @@
     <div class="col-md-12 col-lg-12">
             <div class="card mb-4">
                 <div class="card-block">
-                    <h3 class="card-title">Laporan <a target="_blank" class="btn btn-default" href="{{route('print.bulanan',['start' => $get_start,'end'=>$get_end])}}">Print <i class="fa fa-print"></i></a></h3>
+                    <h3 class="card-title">Laporan <a target="_blank" class="btn btn-default" href="{{route('print.bulanan',['start' => $get_start,'end'=>$get_end,'filter'=>$filter])}}">Print <i class="fa fa-print"></i></a></h3>
                   <div class="table-responsive">
                       @if(session('message')) {!!session('message')!!} @endif
                     <table class="table table-striped" id="dataTable">

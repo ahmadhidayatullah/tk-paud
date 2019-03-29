@@ -29,8 +29,15 @@ class PrintController extends Controller
     {
         $from = $request->start;
         $to = $request->end;
+        $filter = $request->filter;
 
-        $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+        if ($filter == 'semua') {
+            $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+        } else {
+            $data = Pembayaran::whereHas('getSiswaById', function ($query) use ($filter) {
+                $query->where('jenis_bayar', '=', $filter);
+            })->whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+        }
         return view('print.bulanan', [
             'data' => $data,
         ]);
