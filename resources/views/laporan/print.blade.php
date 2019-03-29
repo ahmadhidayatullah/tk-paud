@@ -18,6 +18,10 @@
                             <option value="semua">Semua</option>
                             <option value="cash">Lunas</option>
                             <option value="cicil">Cicil</option>
+                            <option value="pendaftaran">Pendaftaran</option>
+                            <option value="pangkal">Pangkal</option>
+                            <option value="bulanan">Bulanan</option>
+                            <option value="seragam">Seragam</option>
                         </select>
                       </div>
                       <div class="col-lg-3 col-sm-4">
