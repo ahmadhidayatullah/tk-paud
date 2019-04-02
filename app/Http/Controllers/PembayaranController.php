@@ -33,6 +33,33 @@ class PembayaranController extends Controller
                 ->with('message', format_message('Silahkan periksa inputan !', 'danger'));
         }
 
+        if ($request->jenis_pembayaran == 'pangkal') {
+            $count = 0;
+            $total = 0;
+            $pembayaran = Pembayaran::where('data_siswa_id', $request->data_siswa_id)->get();
+            $siswa = DataSiswa::where('id', $request->data_siswa_id)->first();
+
+            foreach ($pembayaran as $value) {
+                if ($value->jenis_pembayaran == 'pangkal') {
+                    $count = $count + $value->bayar;
+                }
+            }
+
+            $total = $count + $count;
+            if ($siswa->jenis_biaya_siswa_id == 2 || $siswa->jenis_biaya_siswa_id == 3) {
+                if ($total > 1500000) {
+                    $siswa->jenis_bayar = 'cash';
+                    $siswa->save();
+                }
+            } else {
+                if ($total > 2300000) {
+                    $siswa->jenis_bayar = 'cash';
+                    $siswa->save();
+                }
+            }
+
+        }
+
         $data = Pembayaran::create([
             'jenis_pembayaran' => $request->jenis_pembayaran,
             'data_siswa_id' => $request->data_siswa_id,
