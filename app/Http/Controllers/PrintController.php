@@ -33,10 +33,17 @@ class PrintController extends Controller
 
         if ($filter == 'semua') {
             $data = Pembayaran::whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
-        } elseif ($filter == 'cash' || $filter == 'cicil') {
+        } elseif ($filter == 'cash') {
             $data = Pembayaran::whereHas('getSiswaById', function ($query) use ($filter) {
                 $query->where('jenis_bayar', '=', $filter);
             })->whereBetween('tanggal', [$from, $to])->orderBy('id', 'DESC')->get();
+        } elseif ($filter == 'cicil') {
+            $data = Pembayaran::whereHas('getSiswaById', function ($query) use ($filter) {
+                $query->where('jenis_bayar', '=', $filter);
+            })->whereBetween('tanggal', [$from, $to])->where([
+                ['jenis_pembayaran', '!=', 'pendaftaran'],
+                ['jenis_pembayaran', '!=', 'seragam'],
+            ])->orderBy('id', 'DESC')->get();
         } else {
             $data = Pembayaran::whereBetween('tanggal', [$from, $to])
                 ->where('jenis_pembayaran', $filter)
