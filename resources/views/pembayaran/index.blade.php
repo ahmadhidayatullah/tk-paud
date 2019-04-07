@@ -130,5 +130,12 @@
            console.log(error);
         });
       });
+
+      $('#bayar').on('keyup',function(){
+        let bayar = parseInt($(this).val(),10);
+        let denda = parseInt($('#denda').val(),10);
+        let sum = bayar + denda;
+        $('#total').val(sum)
+      });
     </script>
 @endsection

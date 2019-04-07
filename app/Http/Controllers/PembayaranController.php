@@ -47,12 +47,12 @@ class PembayaranController extends Controller
 
             $total = $count + $count;
             if ($siswa->jenis_biaya_siswa_id == 2 || $siswa->jenis_biaya_siswa_id == 3) {
-                if ($total > 1500000) {
+                if ($total >= 1500000) {
                     $siswa->jenis_bayar = 'cash';
                     $siswa->save();
                 }
             } else {
-                if ($total > 2300000) {
+                if ($total >= 2300000) {
                     $siswa->jenis_bayar = 'cash';
                     $siswa->save();
                 }
