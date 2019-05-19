@@ -45,7 +45,7 @@ class PembayaranController extends Controller
                 }
             }
 
-            $total = $count + $count;
+            $total = $count + $request->bayar;
             if ($siswa->jenis_biaya_siswa_id == 2 || $siswa->jenis_biaya_siswa_id == 3) {
                 if ($total >= 1500000) {
                     $siswa->jenis_bayar = 'cash';
