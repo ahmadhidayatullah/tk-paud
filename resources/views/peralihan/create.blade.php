@@ -90,7 +90,7 @@
                         @endif
                       </div>
                       <div class="col-md-5">
-                        <input type="date" class="form-control {{ $errors->has('tanggal_lahir') ? ' is-invalid' : '' }}" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal lahir" name="tanggal_lahir" required>
+                        <input type="date" id="tanggal_lahir" class="form-control {{ $errors->has('tanggal_lahir') ? ' is-invalid' : '' }}" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal lahir" name="tanggal_lahir" required>
                         @if ($errors->has('tanggal_lahir')) 
                           <small class="form-text text-muted">{{$errors->first('tanggal_lahir')}}</small>
                         @endif
@@ -296,7 +296,14 @@
         $("#id").val(text.user_id);
         $("#no_hp").val(text.no_hp);
         $("#ortu").val(text.ortu);
+        $("#tanggal_lahir").val(text.tanggal_lahir);
         $("#pekerjaan_orang_tua").val(text.pekerjaan_orang_tua);
+        if (text.jenis_kelamin == 'L') {
+          $("#customRadio1").attr('checked', 'checked');
+        }else{
+          $("#customRadio2").attr('checked', 'checked');
+        }
+        $("#agama").val(text.agama);
 
       }
       // $('data_siswa_id').html()
